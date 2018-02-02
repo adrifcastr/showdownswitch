@@ -1,4 +1,4 @@
-		//Javascript to manipulate switchbru dns UI bu pwsincd
+		//Javascript to manipulate switchbru dns UI by pwsincd
 		//
 		//sidebar highlighting
 		$('.inner').click(function(){
@@ -38,7 +38,7 @@
 					</form>
 					</div>
 					<br>
-					Enter a URL above and hit Load Page.
+					Enter a URL above and hit "Load Page".
 					</div>`;
 					break;
 				}
@@ -55,28 +55,28 @@
 					break;
 				}
 				case 'four':{
-					htmlContent = `<div class="youtube"><img class="ytimg" src="images/youtube.png"><div>Thanks to Ep8Script on gbatemp there is now a way to watch YouTube videos on your switch! There is a thread about it <a href="https://gbatemp.net/threads/tool-website-for-watching-most-youtube-videos-on-the-switch.494796/">here</a>.<br><br>
+					htmlContent = `<div class="youtube"><img class="ytimg" src="images/youtube.png"><div>Thanks to Ep8Script on GBATemp, there is now a way to watch YouTube videos on your Switch! There is a thread about it <a href="https://gbatemp.net/threads/tool-website-for-watching-most-youtube-videos-on-the-switch.494796/">here</a>.<br><br>
 
 <h3>Instructions</h3>
-<font color="red">You cannot watch videos using the DNS trick.</font> Nintendo has blocked video playback in the login applet.<br><br>
+<font color="red">You cannot watch videos using the DNS trick.</font> Nintendo has blocked video playback in the wifi login applet.<br><br>
 
 In order to watch videos, you must use the Share applet. To access this applet, do the following:<br>
 
 <ol>
-<li>Go to your Wifi settings and turn OFF this custom DNS server (this will prevent you from accessing this browser)</li>
-<li>Go to the Switch's User settings, and try to link a Facebook account for social media.</li>
-<li>A login page will come up, go to the bottom and click one of the links on the bottom to go to Facebook for real></li>
-<li class="skip"><i>You can now browse Facebook, but can't access external websites. That's okay</i></li>
-<li>On Facebook, search for "<b>SwitchBru</b>" to find our <a href="https://www.facebook.com/SwitchBru/">facebook page.</a> (you might have to sign in)</li>
-<li>In the post at the top of the profile page, click the google sites URL for watching videos!</li>
-<li>Search for a YouTube video you want to play, and it should play</li>
-<li>If you want to go back to the rest of the Internet, turn back on the custom DNS in Wifi settings</li>
+<li>Go to your Wifi settings and turn OFF this custom DNS server (this will prevent you from accessing this browser).</li>
+<li>Go to the Switch's User settings, and try to link a Facebook account for social media. If you have already linked a Facebook account to this user, you must unlink it first.</li>
+<li>A login page will come up, go to the bottom and click one of the links on the bottom to go to Facebook for real.</li>
+<li class="skip"><i>You can now browse Facebook, but can't access external websites. That's okay.</i></li>
+<li>On Facebook, search for "<b>SwitchBru</b>" to find our <a href="https://www.facebook.com/SwitchBru/">Facebook page</a> (you might have to sign in).</li>
+<li>In the post at the top of the profile page, click the Google Sites URL for watching videos!</li>
+<li>Search for a YouTube video you want to play, then click on the video and it should play.</li>
+<li>If you want to go back to the rest of the internet, turn back on the custom DNS in Internet Settings.</li>
 </ol>
 
-<h3>How does it work</h3>
-The Switch has a whitelist of websites that it's allowed to visit in the Share applet. This is more restricted than the Login applet, but it's allowed to play videos. Google.com is one of those websites, so the Google site link allows the switch to play a video that is located on the Facebook page.<br>
+<h3>How does it work?</h3>
+The Switch has a whitelist of websites that it's allowed to visit in the Share applet. This is more restricted than the Login applet, but it's allowed to play videos. Google.com is one of those websites, so the Google Sites link allows the Switch to play a video that is located on the Facebook page.<br>
 <br>
-If you need help troubleshooting or setting it up you can post in the above GBATemp thread, or contact us.
+If you need help troubleshooting or setting it up you can post in the above GBATemp thread, contact us, or contact <a href="https://twtitter.com/Ep8Script">@Ep8Script</a> on Twitter.
 <br><br>
 <h3>Videos still won't play on the website</h3>
 Make sure you are accessing the page <b>through the share applet</b> in User settings, when you go to link a Facebook account. You have to search for the post to click on the link for it to work. Doing it through this page using the DNS trick will result in the video not being able to play. <b>This is a technical limitation!</b> Blame Nintendo!<br><br>
@@ -126,7 +126,7 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 				case 'cancel':{
 					htmlContent = `<div>
 					<p><h2>Welcome to SwitchBru DNS.</h2><p>
-					<br>Redirection to Google cancelled welcome to our DNS server. 
+					<br>Redirection to Google cancelled. Welcome to our DNS server. 
 					<div><input type="submit"  value="Continue to Google" onclick="google()" />
 					</div>
 					<br>
@@ -194,10 +194,10 @@ This server <b>does not currently block firmware updates</b>. If you are looking
 			var input = document.getElementById("url").value;
 			
 			// add an http:// to the front if it's not present
-			if (!input.toLowerCase().startsWith("http://") && !input.toLowerCase().startsWith("https://"))
-				input = "http://" + input;
-			
-			window.location.href = input;
+			if (input == "")
+				if (!input.toLowerCase().startsWith("http://") && !input.toLowerCase().startsWith("https://"))
+					input = "http://" + input;
+				window.location.href = input;
 		}
 		function survey() {
 			window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSewt6insjUEzg0dWV--n5OlDodk2Zflr3pbd4XWs6hEuZTzNg/viewform";
