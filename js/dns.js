@@ -251,9 +251,7 @@ var lastTime = 0;
 
 gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
     var now = new Date().getTime();
-    if (now - lasttime < 500) {
-        return;
-    } else {
+    if (now - lasttime > 3000) {
         lastTime = now;
 		switch (e.axis) {
 			case "LEFT_STICK_X":
@@ -282,6 +280,7 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 				break;
 		}
     }
+	return;
 });
 
 //link specific functions
@@ -339,6 +338,13 @@ function RIGHT() {
 		$(".selected").removeClass("selected").addClass("prevselected");
 		$("#"+$(".prevselected").attr("right")).addClass("selected");
 		$(".prevselected").removeClass("prevselected");
+	}
+	else if($("#outer-links.selected").length) {
+		$("#content").animate({
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3:first-of-type").offset().top 
+		}, 1000); 
+		$(".selected").removeClass("selected");
+		$("#"+$(".select-next").attr("selectnext")).addClass("selected");
 	}
 	else if($(".selected.outer").length) {
 		$(".selected").removeClass("selected");
