@@ -265,6 +265,7 @@ var changed = function (e) {
 		setTimeout(function () {
             canGo = true;
         }, delay)
+	}
 };
 
 gamepad.bind(Gamepad.Event.AXIS_CHANGED, changed
