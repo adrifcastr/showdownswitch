@@ -229,7 +229,8 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 });
 
 var canGo = true, delay = 500;
-var changed = function (e) {
+
+gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 	if (canGo) {
         canGo = false;
 		switch (e.axis) {
@@ -266,10 +267,7 @@ var changed = function (e) {
             canGo = true;
         }, delay)
 	}
-};
-
-gamepad.bind(Gamepad.Event.AXIS_CHANGED, changed
-);
+});
 
 //link specific functions
 function google() {
