@@ -229,6 +229,7 @@ gamepad.bind(Gamepad.Event.BUTTON_UP, function (e) {
         case "FACE_2":
 			if($(".selected.outer").length) {
 				$(".selected .inner").click();
+				$(".selected").removeClass("selected");
 			}
 			else {
 				$(".selected").click();
