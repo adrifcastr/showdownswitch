@@ -195,7 +195,7 @@ window.onload = function(){
 
 }
 
-gamepad.bind(Gamepad.Event.BUTTON_UP, function (e) {
+gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 	$(".spanbuttons").append(e.control);
     switch (e.control) {
 		case "DPAD_UP":
@@ -244,7 +244,7 @@ gamepad.bind(Gamepad.Event.BUTTON_UP, function (e) {
 gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
     dbt.innerHTML = "" + e.value + " | " + e.axis;
 	switch (e.axis) {
-		case "LEFT_STICK_X":
+		case "RIGHT_STICK_X":
 			if (e.value < -0.5) {
 				if($(".selected").attr("left")) {
 					$(".selected").removeClass("selected").addClass("prevselected");
@@ -259,7 +259,7 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 				}
 			}
 			break;
-		case "LEFT_STICK_Y":
+		case "RIGHT_STICK_Y":
 			if (e.value > 0.5) {
 				if($(".selected").attr("down")) {
 				$(".selected").removeClass("selected").addClass("prevselected");
