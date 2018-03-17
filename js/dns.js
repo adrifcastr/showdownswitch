@@ -24,7 +24,7 @@ function populateData(event){
 			<br><br>
 			<form method="get" action="http://www.google.com/search">
 			<div style="googlesearch">
-			<input class="selected" type="text" id="search-google" name="q" size="25" maxlength="255" value="" placeholder="Enter your search query..." up="nav" left="outer-url" down="google-button" /> <input type="submit" id="google-button" up="search-google" left="outer-survey" value="Google Search" />
+			<input class="selected" type="text" id="search-google" name="q" size="25" maxlength="255" value="" placeholder="Enter your search query..." tabindex="-1" up="nav" left="outer-url" down="google-button" /> <input type="submit" id="google-button" tabindex="-1" up="search-google" left="outer-survey" value="Google Search" />
 			</div>
 			</form>
 			</div>`;
@@ -48,10 +48,10 @@ function populateData(event){
 			htmlContent = `<div><h2><i class="far fa-question-circle"></i> SwitchBru DNS Server Feedback</h2><br>
 			This is a survey to collect information on the usage of the SwitchBru DNS server (45.55.142.122).<br><br>
 			We have made some design changes recently, and would like to better understand how people use the DNS service.<br><br>
-			For usage information, please visit the <a id="visit-website" href="http://switchbru.com/dns/" left="outer-yt" down="survey">SwitchBru DNS website</a>.<br><br>
+			For usage information, please visit the <a id="visit-website" href="http://switchbru.com/dns/" tabindex="-1" left="outer-yt" down="survey">SwitchBru DNS website</a>.<br><br>
 			<form id="form" onsubmit="return false;">
 			<div style="googlesearch">
-			<input type="submit" id="survey" value="Take our survey" onclick="survey()" up="visit-website" left="outer-links"/><span class="selected" up="survey">
+			<input type="submit" id="survey" value="Take our survey" onclick="survey()" tabindex="-1" up="visit-website" left="outer-links"/><span class="selected" up="survey">
 			</form>
 			</div></div>`;
 			break;
@@ -136,22 +136,22 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 			htmlContent = `<div>
 			<p><h2>Welcome to SwitchBru DNS.</h2><p>
 			<br>Redirection to Google cancelled. Welcome to our DNS server. 
-			<div><input type="submit" id="cancel-search" value="Continue to Google" onclick="google()" />
+			<div><input type="submit" id="cancel-search" value="Continue to Google"tabindex="-1"  onclick="google()" tabindex="-1" down="discord-link" left="outer-survey" up="nav"/>
 			</div><span class="selected" up="cancel-search" left="outer-survey" down="discord-link"></span>
 			<br>
-			Find us at:<br><br><a href="https://discord.gg/y2ASN3K" id="discord-link" up="cancel-search" left="outer-links" right="irccloud"><i class="fab fa-discord"></i>   https://discord.gg/y2ASN3K</a>
+			Find us at:<br><br><a href="https://discord.gg/y2ASN3K" id="discord-link" tabindex="-1" up="cancel-search" left="outer-links" right="irccloud"><i class="fab fa-discord"></i>   https://discord.gg/y2ASN3K</a>
 			<span>  and  </span>
-			<a href="https://www.irccloud.com/irc/freenode:2/channel/switchbru" id="irccloud" up="cancel-search" left="discord-link"><i class="far fa-comments"></i>   IRCCLOUD</a>
+			<a href="https://www.irccloud.com/irc/freenode:2/channel/switchbru" id="irccloud" tabindex="-1" up="cancel-search" left="discord-link"><i class="far fa-comments"></i>   IRCCLOUD</a>
 			</div>`;
 			break;
 		}
 		case 'about':{
 			htmlContent = `<h2>About SwitchBru DNS server</h2>
-			This service is provided free of charge with no warranty whatsoever. The service does not store or retain any personal data. Besides providing the Google redirect for the Nintendo Switch, all DNS queries are handled via <a href="https://developers.google.com/speed/public-dns/">Google DNS</a>.
+			This service is provided free of charge with no warranty whatsoever. The service does not store or retain any personal data. Besides providing the Google redirect for the Nintendo Switch, all DNS queries are handled via <a href="https://developers.google.com/speed/public-dns/" tabindex="-1" id="google-dns" up="nav" left="outer-url" down="faq">Google DNS</a>.
 <br><br>
 We are hosting this service as we believe that those of us that purchased an Internet-capable Switch should have the right to browse the web! We hope that one day Nintendo adds an official web browser to the console.
 <br><br>
-This server <b>does not currently block firmware updates</b>. If you are looking to block updates, you should use <a href="https://reswitched.tech/info/faq">ReSwitched DNS</a>, or stay offline.`;
+This server <b>does not currently block firmware updates</b>. If you are looking to block updates, you should use <a href="https://reswitched.tech/info/faq" tabindex="-1" id="faq" up="google-dns" left="outer-links">ReSwitched DNS</a>, or stay offline.<span class="selected" up="faq" down="google-dns"></span>`;
 			break;
 		}
 	}
@@ -227,7 +227,12 @@ gamepad.bind(Gamepad.Event.BUTTON_UP, function (e) {
 			}
             break;
         case "FACE_2":
-            $(".selected").click();
+			if($(".selected").hasClass("outer")) {
+				$(".selected .inner").click();
+			}
+			else {
+				$(".selected").click();
+			}
             break;
     }
 });
