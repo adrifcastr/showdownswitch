@@ -242,7 +242,7 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 				go = false;
 				setInterval(function() {
 					go = true;
-				}, 500);
+				}, 50);
 				break;
 			case "LEFT_STICK_Y":
 			case "RIGHT_STICK_Y":
@@ -254,7 +254,7 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 				go = false;
 				setInterval(function() {
 					go = true;
-				}, 500);
+				}, 50);
 				break;
 		}
 	}
