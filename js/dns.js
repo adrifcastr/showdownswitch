@@ -228,7 +228,7 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
     }
 });
 
-var canGo = true, delay = 500;
+var canGo = true, delay = 50;
 
 gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 	if (canGo) {
