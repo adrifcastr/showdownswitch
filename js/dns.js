@@ -9,6 +9,7 @@ $('.inner').click(function(){
 var gamepad = new Gamepad();
 gamepad.init()
 var targetDiv = document.getElementById('content');
+var starting = true;
 var htmlContent = '';
 var intro = '<div><p><h2>Welcome to SwitchBru DNS.</h2><p><br>Redirecting to <a id="google_link" href="https://www.google.com/webhp?nomo=1&hl=en" tabindex="-1" down="cancel" up="nav" left="outer-google">Google</a> in <span id="count">5</span> seconds. <div><input type="submit" class="selected" id="cancel" tabindex="-1" up="google_link" left="outer-google" value="Cancel Redirection" onclick="populateData(this.id)" /></div></div>';
 targetDiv.innerHTML = intro;
@@ -212,8 +213,9 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 				$(".selected").removeClass("selected").addClass("prevselected");
 				$("#"+$(".prevselected").attr("left")).addClass("selected");
 				$(".prevselected").removeClass("prevselected");
-				if($(".selected.outer").length) {
+				if($(".selected.outer").length && starting == true) {
 					$(".selected .inner").click();
+					starting = false;
 				}
 			}
             break;
@@ -238,6 +240,7 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 			if($(".selected.outer").length) {
 				$(".selected").removeClass("selected");
 				$("#"+$(".select-next").attr("selectnext")).addClass("selected");
+				toggleFullScreen(document.documentElement);
 			}
 			else if($("input[type=text].selected, input[type=url].selected")) {
 				$(".selected").focus();
@@ -307,4 +310,38 @@ function survey() {
 
 function removeSelect() {
 	//$(".selected").removeClass("selected");
+}
+
+var inFullScreen = false;
+
+function toggleFullScreen(element) {
+    if (inFullScreen) {
+        launchFullscreen(element);
+        inFullScreen = false;
+    } else {
+        exitFullscreen();
+        inFullScreen = true;
+    }
+}
+
+function launchFullscreen(element) {
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+    }
+}
+
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }
 }
