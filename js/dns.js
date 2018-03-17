@@ -94,7 +94,7 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 			<div class="flex">
 				<div class="link" id="1" left="outer-links" down="4" right="2"><a href="https://realdekkia.github.io/switch-tetris/" tabindex="-1">Play Tetris</a></div>
 				<div class="link" id="2" left="1" down="5" right="3"><a href="http://switchboard.cool/" tabindex="-1">Switchboard</a></div>
-				<div class="link" id="3" left="2" down="6"><a href="http://fights.today/" tabindex="-1"fights.today</a></div>
+				<div class="link" id="3" left="2" down="6"><a href="http://fights.today/" tabindex="-1">fights.today</a></div>
 				<div class="link" id="4" left="outer-links" up="1" right="5" down="7"><a href="https://www.wiiubru.com/2048/" tabindex="-1">2048</a></div> 
 				<div class="link" id="5" left="4" up="2" right="6" down="8"><a href="https://quickdraw.withgoogle.com/" tabindex="-1">QuickDraw</a></div> 
 				<div class="link" id="6" left="5" up="3" down="9"><a href="http://browserquest.mozilla.org/" tabindex="-1">BrowserQuest</a></div> 
