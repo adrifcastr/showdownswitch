@@ -151,7 +151,7 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 <br><br>
 We are hosting this service as we believe that those of us that purchased an Internet-capable Switch should have the right to browse the web! We hope that one day Nintendo adds an official web browser to the console.
 <br><br>
-This server <b>does not currently block firmware updates</b>. If you are looking to block updates, you should use <a href="https://reswitched.tech/info/faq" tabindex="-1" id="faq" up="google-dns" left="outer-links">ReSwitched DNS</a>, or stay offline.<span class="select-next" selectnext="google-dns"></span>`;
+This server <b>does not currently block firmware updates</b>. If you are looking to block updates, you should use <a href="https://reswitched.tech/info/faq" tabindex="-1" id="faq" up="google-dns" left="outer-about">ReSwitched DNS</a>, or stay offline.<span class="select-next" selectnext="google-dns"></span>`;
 			break;
 		}
 	}
@@ -247,47 +247,42 @@ gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 		UP();
 	}
 });
-
-gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
-	movedStick(e);
-});
-
 var lastTime = 0;
 
-function movedStick(e) {
+gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
     var now = new Date().getTime();
     if (now - lasttime < 500) {
         return;
     } else {
         lastTime = now;
+		switch (e.axis) {
+			case "LEFT_STICK_X":
+			case "RIGHT_STICK_X":
+				if (e.value < -0.5) {
+					LEFT();
+				} else if (e.value > 0.5) {
+					RIGHT();
+				}
+				else if (e.value < 0.5 || e.value > -0.5) {
+					holdLeft = false;
+					holdRight = false;
+				}
+				break;
+			case "LEFT_STICK_Y":
+			case "RIGHT_STICK_Y":
+				if (e.value > 0.5) {
+					DOWN();
+				} else if (e.value < -0.5) {
+					UP();
+				}
+				else if (e.value < 0.5 || e.value > -0.5) {
+					holdUp = false;
+					holdDown = false;
+				}
+				break;
+		}
     }
-    switch (e.axis) {
-		case "LEFT_STICK_X":
-		case "RIGHT_STICK_X":
-			if (e.value < -0.5) {
-				LEFT();
-			} else if (e.value > 0.5) {
-				RIGHT();
-			}
-			else if (e.value < 0.5 || e.value > -0.5) {
-				holdLeft = false;
-				holdRight = false;
-			}
-			break;
-		case "LEFT_STICK_Y":
-		case "RIGHT_STICK_Y":
-			if (e.value > 0.5) {
-				DOWN();
-			} else if (e.value < -0.5) {
-				UP();
-			}
-			else if (e.value < 0.5 || e.value > -0.5) {
-				holdUp = false;
-				holdDown = false;
-            }
-			break;
-	}
-}
+});
 
 //link specific functions
 function google() {
