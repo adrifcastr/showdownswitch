@@ -228,32 +228,56 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
     }
 });
 
-var canGo = true, delay = 1;
+var holdLeft = false, holdRight = false, holdUp = false, holdDown = false;
+var holdStep = 0;
+var holdStepPause = 6;
+
+gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
+	if (holdStep >= holdStepPause) {
+		if (holdLeft) {
+			LEFT();
+		}
+		if (holdRight) {
+			RIGHT();
+		}
+		if (holdDown) {
+			DOWN();
+		}
+		if (holdUp) {
+			UP();
+		}
+		holdStep = 0;
+	} else {
+		holdStep++;
+	}
+});
 
 gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
-	if (canGo) {
-        canGo = false;
-		switch (e.axis) {
-			case "LEFT_STICK_X":
-			case "RIGHT_STICK_X":
-				if (e.value < -0.5) {
-					LEFT();
-				} else if (e.value > 0.5) {
-					RIGHT();
-				}
-				break;
-			case "LEFT_STICK_Y":
-			case "RIGHT_STICK_Y":
-				if (e.value > 0.5) {
-					DOWN();
-				} else if (e.value < -0.5) {
-					UP();
-				}
-				break;
-		}
-		setTimeout(function () {
-            canGo = true;
-        }, delay)
+	switch (e.axis) {
+		case "LEFT_STICK_X":
+		case "RIGHT_STICK_X":
+			if (e.value < -0.5) {
+				LEFT();
+			} else if (e.value > 0.5) {
+				RIGHT();
+			}
+			else if (e.value < 0.5 || e.value > -0.5) {
+				holdLeft = false;
+				holdRight = false;
+			}
+			break;
+		case "LEFT_STICK_Y":
+		case "RIGHT_STICK_Y":
+			if (e.value > 0.5) {
+				DOWN();
+			} else if (e.value < -0.5) {
+				UP();
+			}
+			else if (e.value < 0.5 || e.value > -0.5) {
+				holdUp = false;
+				holdDown = false;
+            }
+			break;
 	}
 });
 
