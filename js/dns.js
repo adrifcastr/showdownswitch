@@ -221,64 +221,40 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 			else if($("#nav.selected").length) {
 				location.reload();
 			}
+			else if($(".selected.link").length) {
+				location.href = $(".selected a").attr("href");
+			}
 			else {
 				$(".selected").click();
-			}
-			if($(".selected.link").length) {
-				$(".selected a").click();
 			}
             break;
     }
 });
 
-var holdLeft = false, holdRight = false, holdUp = false, holdDown = false;
 var lastTime = 0;
 
-gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
-	var now = new Date().getTime();
-	if (now - lastTime > 3000) {
-		lastTime = now;
-		if (holdLeft) {
-			LEFT();
-		}
-		if (holdRight) {
-			RIGHT();
-		}
-		if (holdDown) {
-			DOWN();
-		}
-		if (holdUp) {
-			UP();
-		}
-	}
-});
-
 gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
-	switch (e.axis) {
-		case "LEFT_STICK_X":
-		case "RIGHT_STICK_X":
-			if (e.value < -0.5) {
-				LEFT();
-			} else if (e.value > 0.5) {
-				RIGHT();
-			}
-			else if (e.value < 0.5 || e.value > -0.5) {
-				holdLeft = false;
-				holdRight = false;
-			}
-			break;
-		case "LEFT_STICK_Y":
-		case "RIGHT_STICK_Y":
-			if (e.value > 0.5) {
-				DOWN();
-			} else if (e.value < -0.5) {
-				UP();
-			}
-			else if (e.value < 0.5 || e.value > -0.5) {
-				holdUp = false;
-				holdDown = false;
-			}
-			break;
+	var now = new Date().getTime();
+	if (now - lastTime > 5000) {
+		lastTime = now;
+		switch (e.axis) {
+			case "LEFT_STICK_X":
+			case "RIGHT_STICK_X":
+				if (e.value < -0.5) {
+					LEFT();
+				} else if (e.value > 0.5) {
+					RIGHT();
+				}
+				break;
+			case "LEFT_STICK_Y":
+			case "RIGHT_STICK_Y":
+				if (e.value > 0.5) {
+					DOWN();
+				} else if (e.value < -0.5) {
+					UP();
+				}
+				break;
+		}
 	}
 });
 
