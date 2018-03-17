@@ -236,8 +236,8 @@ var lastTime = 0;
 
 gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 	var now = new Date().getTime();
-	if (now - lasttime > 3000) {
-			lastTime = now;
+	if (now - lastTime > 3000) {
+		lastTime = now;
 		if (holdLeft) {
 			LEFT();
 		}
