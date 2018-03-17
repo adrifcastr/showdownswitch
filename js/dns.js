@@ -241,7 +241,7 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 				go = false;
 				setInterval(function() {
 					go = true;
-				}, 200);
+				}, 800);
 				break;
 			case "RIGHT_STICK_X":
 				if (e.value < -0.5) {
@@ -252,7 +252,7 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 				go = false;
 				setInterval(function() {
 					go = true;
-				}, 200);
+				}, 800);
 				break;
 			case "LEFT_STICK_Y":
 				if (e.value > 0.5) {
@@ -263,7 +263,7 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 				go = false;
 				setInterval(function() {
 					go = true;
-				}, 200);
+				}, 800);
 				break;
 			case "RIGHT_STICK_Y":
 				if (e.value > 0.5) {
@@ -274,7 +274,7 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 				go = false;
 				setInterval(function() {
 					go = true;
-				}, 200);
+				}, 800);
 				break;
 		}
 	}
