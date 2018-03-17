@@ -48,10 +48,10 @@ function populateData(event){
 			htmlContent = `<div><h2><i class="far fa-question-circle"></i> SwitchBru DNS Server Feedback</h2><br>
 			This is a survey to collect information on the usage of the SwitchBru DNS server (45.55.142.122).<br><br>
 			We have made some design changes recently, and would like to better understand how people use the DNS service.<br><br>
-			For usage information, please visit the <a id="visit-website" href="http://switchbru.com/dns/" tabindex="-1" left="outer-yt" down="survey">SwitchBru DNS website</a>.<br><br>
+			For usage information, please visit the <a id="visit-website" href="http://switchbru.com/dns/" tabindex="-1" up="nav" left="outer-yt" down="survey">SwitchBru DNS website</a>.<br><br>
 			<form id="form" onsubmit="return false;">
 			<div style="googlesearch">
-			<input type="submit" id="survey" value="Take our survey" onclick="survey()" tabindex="-1" up="visit-website" left="outer-links"/><span class="selected" up="survey">
+			<input type="submit" id="survey" value="Take our survey" onclick="survey()" tabindex="-1" up="visit-website" left="outer-links"/><span class="selected" up="survey" left="outer-about" down="visit-website"></span>
 			</form>
 			</div></div>`;
 			break;
