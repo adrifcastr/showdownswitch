@@ -288,3 +288,7 @@ function survey() {
 function removeSelect() {
 	//$(".selected").removeClass("selected");
 }
+
+if (!gamepad.init()) {
+    alert("ERROR");
+}
