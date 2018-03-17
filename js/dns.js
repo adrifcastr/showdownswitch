@@ -196,7 +196,7 @@ window.onload = function(){
 }
 
 gamepad.bind(Gamepad.Event.BUTTON_UP, function (e) {
-	alert(e.control);
+	$(".spanbuttons").append(e.control);
     switch (e.control) {
 		case "DPAD_UP":
 			if($(".selected").attr("up")) {
@@ -239,40 +239,38 @@ gamepad.bind(Gamepad.Event.BUTTON_UP, function (e) {
 
 gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
     dbt.innerHTML = "" + e.value + " | " + e.axis;
-	if(!$(".container").is(":hover")) {
-		switch (e.axis) {
-			case "LEFT_STICK_X":
-				if (e.value < -0.5) {
-					if($(".selected").attr("left")) {
-						$(".selected").removeClass("selected").addClass("prevselected");
-						$("#"+$(".prevselected").attr("left")).addClass("selected");
-						$(".prevselected").removeClass("prevselected");
-					}
-				} else if (e.value > 0.5) {
-					if($(".selected").attr("right")) {
-						$(".selected").removeClass("selected").addClass("prevselected");
-						$("#"+$(".prevselected").attr("right")).addClass("selected");
-						$(".prevselected").removeClass("prevselected");
-					}
-				}
-				break;
-			case "LEFT_STICK_Y":
-				if (e.value > 0.5) {
-					if($(".selected").attr("down")) {
+	switch (e.axis) {
+		case "LEFT_STICK_X":
+			if (e.value < -0.5) {
+				if($(".selected").attr("left")) {
 					$(".selected").removeClass("selected").addClass("prevselected");
-					$("#"+$(".prevselected").attr("down")).addClass("selected");
+					$("#"+$(".prevselected").attr("left")).addClass("selected");
 					$(".prevselected").removeClass("prevselected");
 				}
-				} else if (e.value < -0.5) {
-					if($(".selected").attr("up")) {
-						$(".selected").removeClass("selected").addClass("prevselected");
-						$("#"+$(".prevselected").attr("up")).addClass("selected");
-						$(".prevselected").removeClass("prevselected");
-					}
+			} else if (e.value > 0.5) {
+				if($(".selected").attr("right")) {
+					$(".selected").removeClass("selected").addClass("prevselected");
+					$("#"+$(".prevselected").attr("right")).addClass("selected");
+					$(".prevselected").removeClass("prevselected");
 				}
-				break;
-		}
-    }
+			}
+			break;
+		case "LEFT_STICK_Y":
+			if (e.value > 0.5) {
+				if($(".selected").attr("down")) {
+				$(".selected").removeClass("selected").addClass("prevselected");
+				$("#"+$(".prevselected").attr("down")).addClass("selected");
+				$(".prevselected").removeClass("prevselected");
+			}
+			} else if (e.value < -0.5) {
+				if($(".selected").attr("up")) {
+					$(".selected").removeClass("selected").addClass("prevselected");
+					$("#"+$(".prevselected").attr("up")).addClass("selected");
+					$(".prevselected").removeClass("prevselected");
+				}
+			}
+			break;
+	}
 });
 
 //link specific functions
