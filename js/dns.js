@@ -232,7 +232,7 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 
 gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
     dbt.innerHTML = "" + e.value + " | " + e.axis;
-	if(!$(".container").is(":hover")) {
+	if(!false) {
 		switch (e.axis) {
 			case "LEFT_STICK_X":
 				if (e.value < -0.5) {
@@ -286,5 +286,5 @@ function survey() {
 }
 
 function removeSelect() {
-	$(".selected").removeClass("selected");
+	//$(".selected").removeClass("selected");
 }
