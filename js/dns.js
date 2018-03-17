@@ -24,7 +24,7 @@ function populateData(event){
 			<br><br>
 			<form method="get" action="http://www.google.com/search">
 			<div style="googlesearch">
-			<input class="selected" type="text" id="search-google" name="q" size="25" maxlength="255" value="" placeholder="Enter your search query..." tabindex="-1" up="nav" left="outer-url" down="google-button" /> <input type="submit" id="google-button" tabindex="-1" up="search-google" left="outer-survey" value="Google Search" />
+			<input class="selected" type="text" id="search-google" name="q" size="25" maxlength="255" value="" placeholder="Enter your search query..." tabindex="-1" up="nav" left="outer-url" down="google-button" /> <input type="submit" id="google-button" tabindex="-1" up="search-google" left="outer-survey" value="Google Search" /><span class="selected" up="search-google" down="google-button"></span>
 			</div>
 			</form>
 			</div>`;
@@ -230,6 +230,9 @@ gamepad.bind(Gamepad.Event.BUTTON_UP, function (e) {
 			if($(".selected.outer").length) {
 				$(".selected .inner").click();
 				$(".selected").removeClass("selected");
+			}
+			else if($("input[type=text].selected, input[type=url].selected") {
+				$(".selected").focus();
 			}
 			else {
 				$(".selected").click();
