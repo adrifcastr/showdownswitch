@@ -203,7 +203,7 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 				$("#"+$(".prevselected").attr("up")).addClass("selected");
 				$(".prevselected").removeClass("prevselected");
 				if($(".selected.outer").length) {
-					$(".prevselected .inner").click();
+					$(".selected .inner").click();
 				}
 			}
 			break;
@@ -212,6 +212,9 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 				$(".selected").removeClass("selected").addClass("prevselected");
 				$("#"+$(".prevselected").attr("left")).addClass("selected");
 				$(".prevselected").removeClass("prevselected");
+				if($(".selected.outer").length) {
+					$(".selected .inner").click();
+				}
 			}
             break;
         case "DPAD_RIGHT":
@@ -227,7 +230,7 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 				$("#"+$(".prevselected").attr("down")).addClass("selected");
 				$(".prevselected").removeClass("prevselected");
 				if($(".selected.outer").length) {
-					$(".prevselected .inner").click();
+					$(".selected .inner").click();
 				}
 			}
             break;
