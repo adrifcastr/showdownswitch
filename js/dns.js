@@ -199,48 +199,21 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 	$(".spanbuttons").append(e.control);
     switch (e.control) {
 		case "DPAD_UP":
-			if($(".selected").attr("up")) {
-				$(".selected").removeClass("selected").addClass("prevselected");
-				$("#"+$(".prevselected").attr("up")).addClass("selected");
-				$(".prevselected").removeClass("prevselected");
-				if($(".selected.outer").length) {
-					$(".selected .inner").click();
-				}
-			}
+			UP();
 			break;
         case "DPAD_LEFT":
-            if($(".selected").attr("left")) {
-				$(".selected").removeClass("selected").addClass("prevselected");
-				$("#"+$(".prevselected").attr("left")).addClass("selected");
-				$(".prevselected").removeClass("prevselected");
-				if($(".selected.outer").length && starting == true) {
-					$(".selected .inner").click();
-					starting = false;
-				}
-			}
+            LEFT();
             break;
         case "DPAD_RIGHT":
-            if($(".selected").attr("right")) {
-				$(".selected").removeClass("selected").addClass("prevselected");
-				$("#"+$(".prevselected").attr("right")).addClass("selected");
-				$(".prevselected").removeClass("prevselected");
-			}
+            RIGHT();
             break;
         case "DPAD_DOWN":
-            if($(".selected").attr("down")) {
-				$(".selected").removeClass("selected").addClass("prevselected");
-				$("#"+$(".prevselected").attr("down")).addClass("selected");
-				$(".prevselected").removeClass("prevselected");
-				if($(".selected.outer").length) {
-					$(".selected .inner").click();
-				}
-			}
+            DOWN();
             break;
         case "FACE_2":
 			if($(".selected.outer").length) {
 				$(".selected").removeClass("selected");
 				$("#"+$(".select-next").attr("selectnext")).addClass("selected");
-				toggleFullScreen(document.documentElement);
 			}
 			else if($("input[type=text].selected, input[type=url].selected")) {
 				$(".selected").focus();
@@ -256,36 +229,19 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 });
 
 gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
-    dbt.innerHTML = "" + e.value + " | " + e.axis;
 	switch (e.axis) {
-		case "RIGHT_STICK_X":
+		case "LEFT_STICK_X":
 			if (e.value < -0.5) {
-				if($(".selected").attr("left")) {
-					$(".selected").removeClass("selected").addClass("prevselected");
-					$("#"+$(".prevselected").attr("left")).addClass("selected");
-					$(".prevselected").removeClass("prevselected");
-				}
+				LEFT();
 			} else if (e.value > 0.5) {
-				if($(".selected").attr("right")) {
-					$(".selected").removeClass("selected").addClass("prevselected");
-					$("#"+$(".prevselected").attr("right")).addClass("selected");
-					$(".prevselected").removeClass("prevselected");
-				}
+				RIGHT();
 			}
 			break;
-		case "RIGHT_STICK_Y":
+		case "LEFT_STICK_Y":
 			if (e.value > 0.5) {
-				if($(".selected").attr("down")) {
-				$(".selected").removeClass("selected").addClass("prevselected");
-				$("#"+$(".prevselected").attr("down")).addClass("selected");
-				$(".prevselected").removeClass("prevselected");
-			}
+				DOWN();
 			} else if (e.value < -0.5) {
-				if($(".selected").attr("up")) {
-					$(".selected").removeClass("selected").addClass("prevselected");
-					$("#"+$(".prevselected").attr("up")).addClass("selected");
-					$(".prevselected").removeClass("prevselected");
-				}
+				UP();
 			}
 			break;
 	}
@@ -312,36 +268,48 @@ function removeSelect() {
 	//$(".selected").removeClass("selected");
 }
 
-var inFullScreen = false;
-
-function toggleFullScreen(element) {
-    if (inFullScreen) {
-        launchFullscreen(element);
-        inFullScreen = false;
-    } else {
-        exitFullscreen();
-        inFullScreen = true;
-    }
+function UP() {
+	if($(".selected").attr("up")) {
+		$(".selected").removeClass("selected").addClass("prevselected");
+		$("#"+$(".prevselected").attr("up")).addClass("selected");
+		$(".prevselected").removeClass("prevselected");
+		if($(".selected.outer").length) {
+			$(".selected .inner").click();
+		}
+	}
 }
 
-function launchFullscreen(element) {
-    if (element.requestFullscreen) {
-        element.requestFullscreen();
-    } else if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-    } else if (element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen();
-    } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
-    }
+function LEFT() {
+	if($(".selected").attr("left")) {
+		$(".selected").removeClass("selected").addClass("prevselected");
+		$("#"+$(".prevselected").attr("left")).addClass("selected");
+		$(".prevselected").removeClass("prevselected");
+		if($(".selected.outer").length && starting == true) {
+			$(".selected .inner").click();
+			starting = false;
+		}
+	}
 }
 
-function exitFullscreen() {
-    if (document.exitFullscreen) {
-        document.exitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-    }
+function RIGHT() {
+	if($(".selected").attr("right")) {
+		$(".selected").removeClass("selected").addClass("prevselected");
+		$("#"+$(".prevselected").attr("right")).addClass("selected");
+		$(".prevselected").removeClass("prevselected");
+	}
+	else if($(".selected.outer").length) {
+		$(".selected").removeClass("selected");
+		$("#"+$(".select-next").attr("selectnext")).addClass("selected");
+	}
+}
+
+function DOWN() {
+	if($(".selected").attr("down")) {
+		$(".selected").removeClass("selected").addClass("prevselected");
+		$("#"+$(".prevselected").attr("down")).addClass("selected");
+		$(".prevselected").removeClass("prevselected");
+		if($(".selected.outer").length) {
+			$(".selected .inner").click();
+		}
+	}
 }
