@@ -10,7 +10,7 @@ var gamepad = new Gamepad();
 gamepad.init()
 var targetDiv = document.getElementById('content');
 var htmlContent = '';
-var intro = '<div><p><h2>Welcome to SwitchBru DNS.</h2><p><br>Redirecting to <a id="google_link" href="https://www.google.com/webhp?nomo=1&hl=en" down="cancel" up="nav" left="outer-url">Google</a> in <span id="count">5</span> seconds. <div><input type="submit" class="selected" id="cancel" up="google_link" left="outer-survey" value="Cancel Redirection." onclick="populateData(this.id)" /></div></div>';
+var intro = '<div><p><h2>Welcome to SwitchBru DNS.</h2><p><br>Redirecting to <a id="google_link" href="https://www.google.com/webhp?nomo=1&hl=en" tabindex="-1" down="cancel" up="nav" left="outer-url">Google</a> in <span id="count">5</span> seconds. <div><input type="submit" class="selected" id="cancel" tabindex="-1" up="google_link" left="outer-survey" value="Cancel Redirection" onclick="populateData(this.id)" /></div></div>';
 targetDiv.innerHTML = intro;
 //option specific html
 function populateData(event){
@@ -196,7 +196,7 @@ window.onload = function(){
 }
 
 gamepad.bind(Gamepad.Event.BUTTON_UP, function (e) {
-	alert(e.control);
+	console.log(e.control);
     switch (e.control) {
 		case "DPAD_UP":
 			if($(".selected").attr("up")) {
