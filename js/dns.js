@@ -57,7 +57,7 @@ function populateData(event){
 			break;
 		}
 		case 'four':{
-			htmlContent = `<div class="youtube"><img class="ytimg" src="images/SwitchTube.png"><div>Thanks to Ep8Script on GBATemp, there is now a way to watch YouTube videos on your Switch! There is a thread about it <a href="https://gbatemp.net/threads/tool-website-for-watching-most-youtube-videos-on-the-switch.494796/">here</a>.<br><br>
+			htmlContent = `<div class="youtube"><img class="ytimg" src="images/SwitchTube.png"><div>Thanks to Ep8Script on GBATemp, there is now a way to watch YouTube videos on your Switch! There is a thread about it <a href="https://gbatemp.net/threads/tool-website-for-watching-most-youtube-videos-on-the-switch.494796/" tabindex="-1">here</a>.<br><br>
 
 <h3>Instructions</h3>
 <font color="red">You cannot watch videos using the DNS trick.</font> Nintendo has blocked video playback in the wifi login applet.<br><br>
@@ -69,7 +69,7 @@ In order to watch videos, you must use the Share applet. To access this applet, 
 <li>Go to the Switch's User settings, and try to link a Facebook account for social media. If you have already linked a Facebook account to this user, you must unlink it first.</li>
 <li>A login page will come up, go to the bottom and click one of the links on the bottom to go to Facebook for real.</li>
 <li class="skip"><i>You can now browse Facebook, but can't access external websites. That's okay.</i></li>
-<li>On Facebook, search for "<b>SwitchBru</b>" to find our <a href="https://www.facebook.com/SwitchBru/">Facebook page</a> (you might have to sign in).</li>
+<li>On Facebook, search for "<b>SwitchBru</b>" to find our <a href="https://www.facebook.com/SwitchBru/" tabindex="-1">Facebook page</a> (you might have to sign in).</li>
 <li>In the post at the top of the profile page, click the Google Sites URL for watching videos!</li>
 <li>Search for a YouTube video you want to play, then click on the video and it should play.</li>
 <li>If you want to go back to the rest of the internet, turn back on the custom DNS in Internet Settings.</li>
@@ -78,12 +78,12 @@ In order to watch videos, you must use the Share applet. To access this applet, 
 <h3>How does it work?</h3>
 The Switch has a whitelist of websites that it's allowed to visit in the Share applet. This is more restricted than the Login applet, but it's allowed to play videos. Google.com is one of those websites, so the Google Sites link allows the Switch to play a video that is located on the Facebook page.<br>
 <br>
-If you need help troubleshooting or setting it up you can post in the above GBATemp thread, contact us, or contact <a href="https://twtitter.com/Ep8Script">@Ep8Script</a> on Twitter.
+If you need help troubleshooting or setting it up you can post in the above GBATemp thread, contact us, or contact <a href="https://twtitter.com/Ep8Script" tabindex="-1">@Ep8Script</a> on Twitter.
 <br><br>
 <h3>Videos still won't play on the website</h3>
 Make sure you are accessing the page <b>through the share applet</b> in User settings, when you go to link a Facebook account. You have to search for the post to click on the link for it to work. Doing it through this page using the DNS trick will result in the video not being able to play. <b>This is a technical limitation!</b> Blame Nintendo!<br><br>
 
-Using our page isn't necessary, but you do need a way to get this link to the "Share" applet somehow: <a href="https://sites.google.com/site/ytnintendoswitch/">https://sites.google.com/site/ytnintendoswitch/</a>
+Using our page isn't necessary, but you do need a way to get this link to the "Share" applet somehow: <a href="https://sites.google.com/site/ytnintendoswitch/" tabindex="-1">https://sites.google.com/site/ytnintendoswitch/</a>
 
 <br><br><br></div>`;
 			break;
@@ -235,12 +235,6 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
         canGo = false;
 		switch (e.axis) {
 			case "LEFT_STICK_X":
-				if (e.value < -0.5) {
-					LEFT();
-				} else if (e.value > 0.5) {
-					RIGHT();
-				}
-				break;
 			case "RIGHT_STICK_X":
 				if (e.value < -0.5) {
 					LEFT();
@@ -249,12 +243,6 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 				}
 				break;
 			case "LEFT_STICK_Y":
-				if (e.value > 0.5) {
-					DOWN();
-				} else if (e.value < -0.5) {
-					UP();
-				}
-				break;
 			case "RIGHT_STICK_Y":
 				if (e.value > 0.5) {
 					DOWN();
