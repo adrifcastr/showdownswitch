@@ -221,66 +221,65 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 			else if($("#nav.selected").length) {
 				location.reload();
 			}
-			else if($(".selected.link").length) {
-				$(".selected a").click();
-			}
 			else {
 				$(".selected").click();
+			}
+			if($(".selected.link").length) {
+				$(".selected a").click();
 			}
             break;
     }
 });
 
 var holdLeft = false, holdRight = false, holdUp = false, holdDown = false;
-
-gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
-	if (holdLeft) {
-		LEFT();
-	}
-	if (holdRight) {
-		RIGHT();
-	}
-	if (holdDown) {
-		DOWN();
-	}
-	if (holdUp) {
-		UP();
-	}
-});
 var lastTime = 0;
 
-gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
-    var now = new Date().getTime();
-    if (now - lasttime > 3000) {
-        lastTime = now;
-		switch (e.axis) {
-			case "LEFT_STICK_X":
-			case "RIGHT_STICK_X":
-				if (e.value < -0.5) {
-					LEFT();
-				} else if (e.value > 0.5) {
-					RIGHT();
-				}
-				else if (e.value < 0.5 || e.value > -0.5) {
-					holdLeft = false;
-					holdRight = false;
-				}
-				break;
-			case "LEFT_STICK_Y":
-			case "RIGHT_STICK_Y":
-				if (e.value > 0.5) {
-					DOWN();
-				} else if (e.value < -0.5) {
-					UP();
-				}
-				else if (e.value < 0.5 || e.value > -0.5) {
-					holdUp = false;
-					holdDown = false;
-				}
-				break;
+gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
+	var now = new Date().getTime();
+	if (now - lasttime > 3000) {
+			lastTime = now;
+		if (holdLeft) {
+			LEFT();
 		}
-    }
-	return;
+		if (holdRight) {
+			RIGHT();
+		}
+		if (holdDown) {
+			DOWN();
+		}
+		if (holdUp) {
+			UP();
+		}
+	}
+});
+
+gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
+	switch (e.axis) {
+		case "LEFT_STICK_X":
+		case "RIGHT_STICK_X":
+			if (e.value < -0.5) {
+				LEFT();
+			} else if (e.value > 0.5) {
+				RIGHT();
+			}
+			else if (e.value < 0.5 || e.value > -0.5) {
+				holdLeft = false;
+				holdRight = false;
+			}
+			break;
+		case "LEFT_STICK_Y":
+		case "RIGHT_STICK_Y":
+			if (e.value > 0.5) {
+				DOWN();
+			} else if (e.value < -0.5) {
+				UP();
+			}
+			else if (e.value < 0.5 || e.value > -0.5) {
+				holdUp = false;
+				holdDown = false;
+			}
+			break;
+	}
 });
 
 //link specific functions
@@ -331,6 +330,11 @@ function LEFT() {
 			starting = false;
 		}
 	}
+	if($("#outer-links.selected").length) {
+		$("#content").animate({
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3:first-of-type").offset().top 
+		}, 500);
+	}
 }
 
 function RIGHT() {
@@ -338,13 +342,6 @@ function RIGHT() {
 		$(".selected").removeClass("selected").addClass("prevselected");
 		$("#"+$(".prevselected").attr("right")).addClass("selected");
 		$(".prevselected").removeClass("prevselected");
-	}
-	else if($("#outer-links.selected").length) {
-		$("#content").animate({
-			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3:first-of-type").offset().top 
-		}, 1000); 
-		$(".selected").removeClass("selected");
-		$("#"+$(".select-next").attr("selectnext")).addClass("selected");
 	}
 	else if($(".selected.outer").length) {
 		$(".selected").removeClass("selected");
