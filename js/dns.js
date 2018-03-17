@@ -10,7 +10,7 @@ var gamepad = new Gamepad();
 gamepad.init()
 var targetDiv = document.getElementById('content');
 var htmlContent = '';
-var intro = '<div><p><h2>Welcome to SwitchBru DNS.</h2><p><br>Redirecting to <a id="google_link" href="https://www.google.com/webhp?nomo=1&hl=en" tabindex="-1" down="cancel" up="nav" left="outer-url">Google</a> in <span id="count">5</span> seconds. <div><input type="submit" class="selected" id="cancel" tabindex="-1" up="google_link" left="outer-survey" value="Cancel Redirection" onclick="populateData(this.id)" /></div></div>';
+var intro = '<div><p><h2>Welcome to SwitchBru DNS.</h2><p><br>Redirecting to <a id="google_link" href="https://www.google.com/webhp?nomo=1&hl=en" tabindex="-1" down="cancel" up="nav" left="outer-google">Google</a> in <span id="count">5</span> seconds. <div><input type="submit" class="selected" id="cancel" tabindex="-1" up="google_link" left="outer-google" value="Cancel Redirection" onclick="populateData(this.id)" /></div></div>';
 targetDiv.innerHTML = intro;
 //option specific html
 function populateData(event){
@@ -24,7 +24,7 @@ function populateData(event){
 			<br><br>
 			<form method="get" action="http://www.google.com/search">
 			<div style="googlesearch">
-			<input class="selected" type="text" id="search-google" name="q" size="25" maxlength="255" value="" placeholder="Enter your search query..." tabindex="-1" up="nav" left="outer-url" down="google-button" /> <input type="submit" id="google-button" tabindex="-1" up="search-google" left="outer-survey" value="Google Search" /><span class="selected" up="search-google" down="google-button"></span>
+			<input type="text" id="search-google" name="q" size="25" maxlength="255" value="" placeholder="Enter your search query..." tabindex="-1" up="nav" left="outer-google" down="google-button" /> <input type="submit" id="google-button" tabindex="-1" up="search-google" left="outer-google" value="Google Search" /><span class="select-next" selectnext="search-google"></span>
 			</div>
 			</form>
 			</div>`;
@@ -35,9 +35,9 @@ function populateData(event){
 			<br><br>
 			<form id="form" onsubmit="return false;">
 			<div style="googlesearch">
-			<input class="selected" type="url" name="q" size="25" maxlength="255" id="url" value="" placeholder="Enter your URL..." tabindex="-1" up="nav" left="outer-survey" down="load-page" />
-			<input type="submit" id="load-page" value="Load Page" onclick="loadurl(url)" tabindex="-1" up="url" left="outer-yt" />
-			</form>
+			<input type="url" name="q" size="25" maxlength="255" id="url" value="" placeholder="Enter your URL..." tabindex="-1" up="nav" left="outer-url" down="load-page" />
+			<input type="submit" id="load-page" value="Load Page" onclick="loadurl(url)" tabindex="-1" up="url" left="outer-urls" />
+			</form><span class="select-next" selectnext="url"></span>
 			</div>
 			<br>
 			Enter a URL above and hit "Load Page".
@@ -48,12 +48,11 @@ function populateData(event){
 			htmlContent = `<div><h2><i class="far fa-question-circle"></i> SwitchBru DNS Server Feedback</h2><br>
 			This is a survey to collect information on the usage of the SwitchBru DNS server (45.55.142.122).<br><br>
 			We have made some design changes recently, and would like to better understand how people use the DNS service.<br><br>
-			For usage information, please visit the <a id="visit-website" href="http://switchbru.com/dns/" tabindex="-1" up="nav" left="outer-yt" down="survey">SwitchBru DNS website</a>.<br><br>
+			For usage information, please visit the <a id="visit-website" href="http://switchbru.com/dns/" tabindex="-1" up="nav" left="outer-survey" down="survey">SwitchBru DNS website</a>.<br><br>
 			<form id="form" onsubmit="return false;">
 			<div style="googlesearch">
-			<input type="submit" id="survey" value="Take our survey" onclick="survey()" tabindex="-1" up="visit-website" left="outer-links"/>
-			</form><span class="selected" up="survey" left="survey" down="survey" right="survey"></span>
-			</div></div>`;
+			<input type="submit" id="survey" value="Take our survey" onclick="survey()" tabindex="-1" up="visit-website" left="outer-survey"/>
+			</form><span class="select-next" selectnext="visit-website"></span>`;
 			break;
 		}
 		case 'four':{
@@ -136,8 +135,8 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 			htmlContent = `<div>
 			<p><h2>Welcome to SwitchBru DNS.</h2><p>
 			<br>Redirection to Google cancelled. Welcome to our DNS server. 
-			<div><input type="submit" id="cancel-search" value="Continue to Google"tabindex="-1"  onclick="google()" tabindex="-1" down="discord-link" left="outer-survey" up="nav"/>
-			</div><span class="selected" up="cancel-search" left="outer-survey" down="discord-link"></span>
+			<div><input class="selected" type="submit" id="cancel-search" value="Continue to Google"tabindex="-1"  onclick="google()" tabindex="-1" down="discord-link" left="outer-google" up="nav"/>
+			</div><span up="cancel-search" left="outer-google" down="discord-link"></span>
 			<br>
 			Find us at:<br><br><a href="https://discord.gg/y2ASN3K" id="discord-link" tabindex="-1" up="cancel-search" left="outer-links" right="irccloud"><i class="fab fa-discord"></i>   https://discord.gg/y2ASN3K</a>
 			<span>  and  </span>
@@ -147,11 +146,11 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 		}
 		case 'about':{
 			htmlContent = `<h2>About SwitchBru DNS server</h2>
-			This service is provided free of charge with no warranty whatsoever. The service does not store or retain any personal data. Besides providing the Google redirect for the Nintendo Switch, all DNS queries are handled via <a href="https://developers.google.com/speed/public-dns/" tabindex="-1" id="google-dns" up="nav" left="outer-url" down="faq">Google DNS</a>.
+			This service is provided free of charge with no warranty whatsoever. The service does not store or retain any personal data. Besides providing the Google redirect for the Nintendo Switch, all DNS queries are handled via <a href="https://developers.google.com/speed/public-dns/" tabindex="-1" id="google-dns" up="nav" left="outer-about" down="faq">Google DNS</a>.
 <br><br>
 We are hosting this service as we believe that those of us that purchased an Internet-capable Switch should have the right to browse the web! We hope that one day Nintendo adds an official web browser to the console.
 <br><br>
-This server <b>does not currently block firmware updates</b>. If you are looking to block updates, you should use <a href="https://reswitched.tech/info/faq" tabindex="-1" id="faq" up="google-dns" left="outer-links">ReSwitched DNS</a>, or stay offline.<span class="selected" up="faq" down="google-dns"></span>`;
+This server <b>does not currently block firmware updates</b>. If you are looking to block updates, you should use <a href="https://reswitched.tech/info/faq" tabindex="-1" id="faq" up="google-dns" left="outer-links">ReSwitched DNS</a>, or stay offline.<span class="select-next" selectnext="google-dns"></span>`;
 			break;
 		}
 	}
@@ -203,6 +202,9 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 				$(".selected").removeClass("selected").addClass("prevselected");
 				$("#"+$(".prevselected").attr("up")).addClass("selected");
 				$(".prevselected").removeClass("prevselected");
+				if($(".selected.outer").length) {
+					$(".prevselected .inner").click();
+				}
 			}
 			break;
         case "DPAD_LEFT":
@@ -224,16 +226,21 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 				$(".selected").removeClass("selected").addClass("prevselected");
 				$("#"+$(".prevselected").attr("down")).addClass("selected");
 				$(".prevselected").removeClass("prevselected");
+				if($(".selected.outer").length) {
+					$(".prevselected .inner").click();
+				}
 			}
             break;
         case "FACE_2":
 			if($(".selected.outer").length) {
-				$(".selected").removeClass("selected").addClass("prevselected");
-				$(".prevselected .inner").click();
-				$(".prevselected").removeClass("prevselected");
+				$(".selected").removeClass("selected");
+				$("#"+$(".select-next").attr("selectnext")).addClass("selected");
 			}
 			else if($("input[type=text].selected, input[type=url].selected")) {
 				$(".selected").focus();
+			}
+			else if($("#nav.selected").length) {
+				location.reload();
 			}
 			else {
 				$(".selected").click();
