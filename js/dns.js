@@ -92,43 +92,43 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 			htmlContent = `
 			<h3>Switch-related</h3>
 			<div class="flex">
-				<div class="link"><a href="https://realdekkia.github.io/switch-tetris/">Play Tetris</a></div>
-				<div class="link"><a href="http://switchboard.cool/">Switchboard</a></div>
-				<div class="link"><a href="http://fights.today/">fights.today</a></div>
-				<div class="link"><a href="https://www.wiiubru.com/2048/">2048</a></div> 
-				<div class="link"><a href="https://quickdraw.withgoogle.com/">QuickDraw</a></div> 
-				<div class="link"><a href="http://browserquest.mozilla.org/">BrowserQuest</a></div> 
-				<div class="link"><a href="https://www.google.com/logos/2010/pacman10-i.html">Pac-Man</a></div> 
-				<div class="link"><a href="http://www.wiiubru.com/gp.html">Gamepad</a></div> 
-				<div class="link"><a href="https://gbatemp.net/categories/nintendo-switch-discussions.282/">GBAtemp</a></div>
+				<div class="link" id="1" left="outer-links" down="4" right="2"><a href="https://realdekkia.github.io/switch-tetris/">Play Tetris</a></div>
+				<div class="link" id="2" left="1" down="5" right="3"><a href="http://switchboard.cool/">Switchboard</a></div>
+				<div class="link" id="3" left="2" down="6"><a href="http://fights.today/">fights.today</a></div>
+				<div class="link" id="4" left="outer-links" up="1" right="5" down="7"><a href="https://www.wiiubru.com/2048/">2048</a></div> 
+				<div class="link" id="5" left="4" up="2" right="6" down="8"><a href="https://quickdraw.withgoogle.com/">QuickDraw</a></div> 
+				<div class="link" id="6" left="5" up="3" down="9"><a href="http://browserquest.mozilla.org/">BrowserQuest</a></div> 
+				<div class="link" id="7" left="outer-links" up="4" down="10" right="8"><a href="https://www.google.com/logos/2010/pacman10-i.html">Pac-Man</a></div> 
+				<div class="link" id="8" left="7" up="5" down="11" right="9"><a href="http://www.wiiubru.com/gp.html">Gamepad</a></div> 
+				<div class="link" id="9" left="8" up="6" down="12"><a href="https://gbatemp.net/categories/nintendo-switch-discussions.282/">GBAtemp</a></div>
 			</div>
 			<br>
 			If you have your own site that you'd like to add to this page, let us know!
 			<br>
 			<h3>Other Links</h3>
 			<div class="flex">
-				<div class="link"><a href="https://reddit.com">Reddit</a></div>
-				<div class="link"><a href="https://tumblr.com">Tumblr</a></div>
-				<div class="link"><a href="https://twitter.com">Twitter</a></div>
-				<div class="link"><a href="https://wikipedia.org">Wikipedia</a></div>
-				<div class="link"><a href="https://mail.google.com">GMail</a></div>
-				<div class="link"><a href="https://facebook.com">Facebook</a></div>
-				<div class="link"><a href="https://amazon.com">Amazon</a></div> 
-				<div class="link"><a href="https://www.pixiv.net">Pixiv</a></div> 
-				<div class="link"><a href="https://closed.pizza">ClosedVerse</a></div> 
-				<div class="link"><a href="https://roblox.com">Roblox.com</a></div>
-				<div class="link"><a href="https://minecraft.net">Minecraft.net</a></div>
-				<div class="link"><a href="http://zeldadungeon.net">ZeldaDungeon</a></div>
-				<div class="link"><a href="https://youtube.com">YouTube</a></div>
-				<div class="link"><a href="https://github.com">GitHub</a></div>
-				<div class="link"><a href="https://deviantart">DeviantArt</a></div>
-				<div class="link"><a href="https://wattpad.com">WattPad</a></div>
-				<div class="link"><a href="https://gdax.com">GDAX</a></div>
-				<div class="link"><a href="https://instagram.com">Instagram</a></div>
-				<div class="link"><a href="https://duckduckgo.com">DuckDuckGo</a></div>
-				<div class="link"><a href="https://yahoo.com">Yahoo</a></div>
-				<div class="link"><a href="https://bing.com">Bing</a></div>
-			</div><br>
+				<div class="link" id="10" left="outer-links" up="7" right="11" down="13"><a href="https://reddit.com">Reddit</a></div>
+				<div class="link" id="11" left="10" up="8" right="12" down="14"><a href="https://tumblr.com">Tumblr</a></div>
+				<div class="link" id="12" left="11" up="9" down="15"><a href="https://twitter.com">Twitter</a></div>
+				<div class="link" id="13" left="outer-links" up="10" right="14" down="16"><a href="https://wikipedia.org">Wikipedia</a></div>
+				<div class="link" id="14" left="13" up="11" right="15" down="17"><a href="https://mail.google.com">GMail</a></div>
+				<div class="link" id="15" left="14" up="12" down="18"><a href="https://facebook.com">Facebook</a></div>
+				<div class="link" id="16" left="outer-links" up="13" right="17" down="19"><a href="https://amazon.com">Amazon</a></div> 
+				<div class="link" id="17" left="16" up="14" right="18" down="20"><a href="https://www.pixiv.net">Pixiv</a></div> 
+				<div class="link" id="18" left="17" up="15" down="21"><a href="https://closed.pizza">ClosedVerse</a></div> 
+				<div class="link" id="19" left="outer-links" up="16" down="22"><a href="https://roblox.com">Roblox.com</a></div>
+				<div class="link" id="20" left="19" up="17" right="21" down="23"><a href="https://minecraft.net">Minecraft.net</a></div>
+				<div class="link" id="21" left="20" up="18" down="24"><a href="http://zeldadungeon.net">ZeldaDungeon</a></div>
+				<div class="link" id="22" left="outer-links" up="19" right="23" down="25"><a href="https://youtube.com">YouTube</a></div>
+				<div class="link" id="23" left="22" up="20" right="24" down="26"><a href="https://github.com">GitHub</a></div>
+				<div class="link" id="24" left="23" up="21" down="27"><a href="https://deviantart">DeviantArt</a></div>
+				<div class="link" id="25" left="outer-links" up="22" down="28"><a href="https://wattpad.com">WattPad</a></div>
+				<div class="link" id="26" left="25" up="23" right="27" down="29"><a href="https://gdax.com">GDAX</a></div>
+				<div class="link" id="27" left="26" up="24" down="30"><a href="https://instagram.com">Instagram</a></div>
+				<div class="link" id="28" left="outer-links" up="25" right="29"><a href="https://duckduckgo.com">DuckDuckGo</a></div>
+				<div class="link" id="29" left="28" up="26" right="30"><a href="https://yahoo.com">Yahoo</a></div>
+				<div class="link" id="30" left="29" up="27"><a href="https://bing.com">Bing</a></div>
+			</div><span class="select-next" selectnext="1"></span><br>
 			`;
 			break;
 		}
@@ -229,26 +229,19 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 });
 
 var holdLeft = false, holdRight = false, holdUp = false, holdDown = false;
-var holdStep = 0;
-var holdStepPause = 5000000;
 
 gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
-	if (holdStep >= holdStepPause) {
-		if (holdLeft) {
-			LEFT();
-		}
-		if (holdRight) {
-			RIGHT();
-		}
-		if (holdDown) {
-			DOWN();
-		}
-		if (holdUp) {
-			UP();
-		}
-		holdStep = 0;
-	} else {
-		holdStep++;
+	if (holdLeft) {
+		LEFT();
+	}
+	if (holdRight) {
+		RIGHT();
+	}
+	if (holdDown) {
+		DOWN();
+	}
+	if (holdUp) {
+		UP();
 	}
 });
 
@@ -311,6 +304,11 @@ function UP() {
 			$(".selected .inner").click();
 		}
 	}
+	if($(".selected").attr("id") == ("7" || "8" || "9" )) {
+		$("#content").animate({
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3:first-of-type").offset().top 
+		}, 1000); 
+	}
 }
 
 function LEFT() {
@@ -345,5 +343,10 @@ function DOWN() {
 		if($(".selected.outer").length) {
 			$(".selected .inner").click();
 		}
+	}
+	if($(".selected").attr("id") == ("10" || "11" || "12" )) {
+		$("#content").animate({
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3:last-of-type").offset().top 
+		}, 1000); 
 	}
 }
