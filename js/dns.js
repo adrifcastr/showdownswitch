@@ -249,7 +249,19 @@ gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 });
 
 gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
-	switch (e.axis) {
+	movedStick(e);
+});
+
+var lastTime = 0;
+
+function movedStick(e) {
+    var now = new Date().getTime();
+    if (now - lasttime < 500) {
+        return;
+    } else {
+        lastTime = now;
+    }
+    switch (e.axis) {
 		case "LEFT_STICK_X":
 		case "RIGHT_STICK_X":
 			if (e.value < -0.5) {
@@ -275,7 +287,7 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
             }
 			break;
 	}
-});
+}
 
 //link specific functions
 function google() {
