@@ -228,8 +228,9 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
             break;
         case "FACE_2":
 			if($(".selected.outer").length) {
-				$(".selected .inner").click();
-				$(".selected").removeClass("selected");
+				$(".selected").removeClass("selected").addClass("prevselected");
+				$(".prevselected .inner").click();
+				$(".prevselected").removeClass("prevselected");
 			}
 			else if($("input[type=text].selected, input[type=url].selected")) {
 				$(".selected").focus();
