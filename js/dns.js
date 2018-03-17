@@ -230,53 +230,21 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 });
 
 gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
-	if(go) {
-		switch (e.axis) {
-			case "LEFT_STICK_X":
-				if (e.value < -0.5) {
-					LEFT();
-				} else if (e.value > 0.5) {
-					RIGHT();
-				}
-				go = false;
-				setInterval(function() {
-					go = true;
-				}, 800);
-				break;
-			case "RIGHT_STICK_X":
-				if (e.value < -0.5) {
-					LEFT();
-				} else if (e.value > 0.5) {
-					RIGHT();
-				}
-				go = false;
-				setInterval(function() {
-					go = true;
-				}, 800);
-				break;
-			case "LEFT_STICK_Y":
-				if (e.value > 0.5) {
-					DOWN();
-				} else if (e.value < -0.5) {
-					UP();
-				}
-				go = false;
-				setInterval(function() {
-					go = true;
-				}, 800);
-				break;
-			case "RIGHT_STICK_Y":
-				if (e.value > 0.5) {
-					DOWN();
-				} else if (e.value < -0.5) {
-					UP();
-				}
-				go = false;
-				setInterval(function() {
-					go = true;
-				}, 800);
-				break;
-		}
+	switch (e.axis) {
+		case "LEFT_STICK_X":
+			if (e.value < -0.5) {
+				LEFT();
+			} else if (e.value > 0.5) {
+				RIGHT();
+			}
+			break;
+		case "LEFT_STICK_Y":
+			if (e.value > 0.5) {
+				DOWN();
+			} else if (e.value < -0.5) {
+				UP();
+			}
+			break;
 	}
 });
 
