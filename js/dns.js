@@ -221,6 +221,9 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 			else if($("#nav.selected").length) {
 				location.reload();
 			}
+			else if($(".selected.link").length) {
+				$(".selected a").click();
+			}
 			else {
 				$(".selected").click();
 			}
