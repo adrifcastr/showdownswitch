@@ -196,7 +196,7 @@ window.onload = function(){
 }
 
 gamepad.bind(Gamepad.Event.BUTTON_UP, function (e) {
-	console.log(e.control);
+	alert(e.control);
     switch (e.control) {
 		case "DPAD_UP":
 			if($(".selected").attr("up")) {
