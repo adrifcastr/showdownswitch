@@ -35,8 +35,8 @@ function populateData(event){
 			<br><br>
 			<form id="form" onsubmit="return false;">
 			<div style="googlesearch">
-			<input class="selected" type="url" name="q" size="25" maxlength="255" id="url" value="" placeholder="Enter your URL..." up="nav" left="outer-survey" down="load-page" />
-			<input type="submit" id="load-page" value="Load Page" onclick="loadurl(url)" up="url" left="outer-yt" />
+			<input class="selected" type="url" name="q" size="25" maxlength="255" id="url" value="" placeholder="Enter your URL..." tabindex="-1" up="nav" left="outer-survey" down="load-page" />
+			<input type="submit" id="load-page" value="Load Page" onclick="loadurl(url)" tabindex="-1" up="url" left="outer-yt" />
 			</form>
 			</div>
 			<br>
@@ -231,7 +231,7 @@ gamepad.bind(Gamepad.Event.BUTTON_UP, function (e) {
 				$(".selected .inner").click();
 				$(".selected").removeClass("selected");
 			}
-			else if($("input[type=text].selected, input[type=url].selected") {
+			else if($("input[type=text].selected, input[type=url].selected")) {
 				$(".selected").focus();
 			}
 			else {
