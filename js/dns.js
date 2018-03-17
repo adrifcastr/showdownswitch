@@ -230,7 +230,7 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 
 var holdLeft = false, holdRight = false, holdUp = false, holdDown = false;
 var holdStep = 0;
-var holdStepPause = 3000;
+var holdStepPause = 10000;
 
 gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 	if (holdStep >= holdStepPause) {
