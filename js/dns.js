@@ -1,61 +1,62 @@
-		//Javascript to manipulate switchbru dns UI by pwsincd
-		//
-		//sidebar highlighting
-		$('.inner').click(function(){
-			$('.inner').removeClass('inner-active');
-			$(this).addClass('inner-active');
-		});
-		//set variabless
-		var targetDiv = document.getElementById('content');
-		var htmlContent = '';
-		var intro = '<div><p><h2>Welcome to SwitchBru DNS.</h2><p><br>Redirecting to <a href="https://www.google.com/webhp?nomo=1&hl=en">Google</a> in <span id="count">5</span> seconds. <div><input type="submit" id="cancel" value="Cancel Redirection." onclick="populateData(this.id)" /></div></div>';
-		targetDiv.innerHTML = intro;
-		//option specific html
-		function populateData(event){
-			switch(event){
-				case 'nav':{
-					location.reload();
-					break;
-				}
-				case 'one':{
-					htmlContent = `<div class="google"><img class="google-rs" src="images/Google.png">
-					<br><br>
-					<form method="get" action="http://www.google.com/search">
-					<div style="googlesearch">
-					<input type="text" name="q" size="25" maxlength="255" value="" placeholder="Enter your search query..." /> <input type="submit" value="Google Search" />
-					</div>
-					</form>
-					</div>`;
-					break;
-				}
-				case 'two':{
-					htmlContent = `<div class="google"><img class="webkit" src="images/webkit.png">
-					<br><br>
-					<form id="form" onsubmit="return false;">
-					<div style="googlesearch">
-					<input type="url" name="q" size="25" maxlength="255" id="url" value="" placeholder="Enter your URL..." />
-					<input type="submit" value="Load Page" onclick="loadurl(url)" />
-					</form>
-					</div>
-					<br>
-					Enter a URL above and hit "Load Page".
-					</div>`;
-					break;
-				}
-				case 'three':{
-					htmlContent = `<div><h2><i class="far fa-question-circle"></i> SwitchBru DNS Server Feedback</h2><br>
-					This is a survey to collect information on the usage of the SwitchBru DNS server (45.55.142.122).<br><br>
-					We have made some design changes recently, and would like to better understand how people use the DNS service.<br><br>
-					For usage info please visit : <a href="http://switchbru.com/dns/">Switchbru DNS website</a><br><br>
-					<form id="form" onsubmit="return false;">
-					<div style="googlesearch">
-					<input type="submit" value="Take our survey" onclick="survey()" />
-					</form>
-					</div></div>`;
-					break;
-				}
-				case 'four':{
-					htmlContent = `<div class="youtube"><img class="ytimg" src="images/youtube.png"><div>Thanks to Ep8Script on GBATemp, there is now a way to watch YouTube videos on your Switch! There is a thread about it <a href="https://gbatemp.net/threads/tool-website-for-watching-most-youtube-videos-on-the-switch.494796/">here</a>.<br><br>
+//Javascript to manipulate switchbru dns UI by pwsincd
+//
+//sidebar highlighting
+$('.inner').click(function(){
+	$('.inner').removeClass('inner-active');
+	$(this).addClass('inner-active');
+});
+//set variabless
+var gamepad = new Gamepad();
+var targetDiv = document.getElementById('content');
+var htmlContent = '';
+var intro = '<div><p><h2>Welcome to SwitchBru DNS.</h2><p><br>Redirecting to <a id="google_link" href="https://www.google.com/webhp?nomo=1&hl=en" down="cancel" up="nav" left="outer-url">Google</a> in <span id="count">5</span> seconds. <div><input type="submit" class="selected" id="cancel" up="google_link" left="outer-survey" value="Cancel Redirection." onclick="populateData(this.id)" /></div></div>';
+targetDiv.innerHTML = intro;
+//option specific html
+function populateData(event){
+	switch(event){
+		case 'nav':{
+			location.reload();
+			break;
+		}
+		case 'one':{
+			htmlContent = `<div class="google"><img class="google-rs" src="images/Google.png">
+			<br><br>
+			<form method="get" action="http://www.google.com/search">
+			<div style="googlesearch">
+			<input class="selected" type="text" id="search-google" name="q" size="25" maxlength="255" value="" placeholder="Enter your search query..." up="nav" left="outer-url" down="google-button" /> <input type="submit" id="google-button" up="search-google" left="outer-survey" value="Google Search" />
+			</div>
+			</form>
+			</div>`;
+			break;
+		}
+		case 'two':{
+			htmlContent = `<div class="google"><img class="webkit" src="images/webkit.png">
+			<br><br>
+			<form id="form" onsubmit="return false;">
+			<div style="googlesearch">
+			<input class="selected" type="url" name="q" size="25" maxlength="255" id="url" value="" placeholder="Enter your URL..." up="nav" left="outer-survey" down="load-page" />
+			<input type="submit" id="load-page" value="Load Page" onclick="loadurl(url)" up="url" left="outer-yt" />
+			</form>
+			</div>
+			<br>
+			Enter a URL above and hit "Load Page".
+			</div>`;
+			break;
+		}
+		case 'three':{
+			htmlContent = `<div><h2><i class="far fa-question-circle"></i> SwitchBru DNS Server Feedback</h2><br>
+			This is a survey to collect information on the usage of the SwitchBru DNS server (45.55.142.122).<br><br>
+			We have made some design changes recently, and would like to better understand how people use the DNS service.<br><br>
+			For usage information, please visit the <a id="visit-website" href="http://switchbru.com/dns/" left="outer-yt" down="survey">SwitchBru DNS website</a>.<br><br>
+			<form id="form" onsubmit="return false;">
+			<div style="googlesearch">
+			<input type="submit" id="survey" value="Take our survey" onclick="survey()" up="visit-website" left="outer-links"/><span class="selected" up="survey">
+			</form>
+			</div></div>`;
+			break;
+		}
+		case 'four':{
+			htmlContent = `<div class="youtube"><img class="ytimg" src="images/SwitchTube.png"><div>Thanks to Ep8Script on GBATemp, there is now a way to watch YouTube videos on your Switch! There is a thread about it <a href="https://gbatemp.net/threads/tool-website-for-watching-most-youtube-videos-on-the-switch.494796/">here</a>.<br><br>
 
 <h3>Instructions</h3>
 <font color="red">You cannot watch videos using the DNS trick.</font> Nintendo has blocked video playback in the wifi login applet.<br><br>
@@ -84,122 +85,206 @@ Make sure you are accessing the page <b>through the share applet</b> in User set
 Using our page isn't necessary, but you do need a way to get this link to the "Share" applet somehow: <a href="https://sites.google.com/site/ytnintendoswitch/">https://sites.google.com/site/ytnintendoswitch/</a>
 
 <br><br><br></div>`;
-					break;
-				}
-				case 'five':{
-					htmlContent = `
-					<h3>Switch-related</h3>
-					<div class="flex">
-						<div class="link"><a href="https://realdekkia.github.io/switch-tetris/">Play Tetris</a></div>
-						<div class="link"><a href="http://switchboard.cool/">Switchboard</a></div>
-						<div class="link"><a href="http://fights.today/">fights.today</a></div>
-						<div class="link"><a href="https://html5test.com/">html5test</a></div>
-						<div class="link"><a href="https://gbatemp.net/categories/nintendo-switch-discussions.282/">GBAtemp</a></div>
-					</div>
-					<br>
-					If you have your own site that you'd like to add to this page, let us know!
-					<br>
-					<h3>Other Links</h3>
-					<div class="flex">
-						<div class="link"><a href="https://reddit.com">Reddit</a></div>
-						<div class="link"><a href="https://tumblr.com">Tumblr</a></div>
-						<div class="link"><a href="https://twitter.com">Twitter</a></div>
-						<div class="link"><a href="https://wikipedia.org">Wikipedia</a></div>
-						<div class="link"><a href="https://mail.google.com">GMail</a></div>
-						<div class="link"><a href="https://facebook.com">Facebook</a></div>
-						<div class="link"><a href="https://roblox.com">Roblox.com</a></div>
-						<div class="link"><a href="https://minecraft.net">Minecraft.net</a></div>
-						<div class="link"><a href="http://zeldadungeon.net">ZeldaDungeon</a></div>
-						<div class="link"><a href="https://youtube.com">YouTube</a></div>
-						<div class="link"><a href="https://github.com">GitHub</a></div>
-						<div class="link"><a href="https://deviantart">DeviantArt</a></div>
-						<div class="link"><a href="https://wattpad.com">WattPad</a></div>
-						<div class="link"><a href="https://gdax.com">GDAX</a></div>
-						<div class="link"><a href="https://instagram.com">Instagram</a></div>
-						<div class="link"><a href="https://duckduckgo.com">DuckDuckGo</a></div>
-						<div class="link"><a href="https://yahoo.com">Yahoo</a></div>
-						<div class="link"><a href="https://bing.com">Bing</a></div>
-					</div>
-					`;
-					break;
-				}
-				case 'cancel':{
-					htmlContent = `<div>
-					<p><h2>Welcome to SwitchBru DNS.</h2><p>
-					<br>Redirection to Google cancelled. Welcome to our DNS server. 
-					<div><input type="submit"  value="Continue to Google" onclick="google()" />
-					</div>
-					<br>
-					Find us at :<br><br><a href="https://discord.gg/y2ASN3K"><i class="fab fa-discord"></i>   https://discord.gg/y2ASN3K</a>
-					<span>  and  </span>
-					<a href="https://www.irccloud.com/irc/freenode:2/channel/switchbru"><i class="far fa-comments"></i>   IRCCLOUD</a>
-					</div>`;
-					break;
-				}
-				case 'about':{
-					htmlContent = `<h2>About SwitchBru DNS server</h2>
-					This service is provided free of charge with no warranty whatsoever. The service does not store or retain any personal data. Besides providing the Google redirect for the Nintendo Switch, all DNS queries are handled via <a href="https://developers.google.com/speed/public-dns/">Google DNS</a>.
+			break;
+		}
+		case 'five':{
+			htmlContent = `
+			<h3>Switch-related</h3>
+			<div class="flex">
+				<div class="link"><a href="https://realdekkia.github.io/switch-tetris/">Play Tetris</a></div>
+				<div class="link"><a href="http://switchboard.cool/">Switchboard</a></div>
+				<div class="link"><a href="http://fights.today/">fights.today</a></div>
+				<div class="link"><a href="https://www.wiiubru.com/2048/">2048</a></div> 
+				<div class="link"><a href="https://quickdraw.withgoogle.com/">QuickDraw</a></div> 
+				<div class="link"><a href="http://browserquest.mozilla.org/">BrowserQuest</a></div> 
+				<div class="link"><a href="https://www.google.com/logos/2010/pacman10-i.html">Pac-Man</a></div> 
+				<div class="link"><a href="http://www.wiiubru.com/gp.html">Gamepad</a></div> 
+				<div class="link"><a href="https://gbatemp.net/categories/nintendo-switch-discussions.282/">GBAtemp</a></div>
+			</div>
+			<br>
+			If you have your own site that you'd like to add to this page, let us know!
+			<br>
+			<h3>Other Links</h3>
+			<div class="flex">
+				<div class="link"><a href="https://reddit.com">Reddit</a></div>
+				<div class="link"><a href="https://tumblr.com">Tumblr</a></div>
+				<div class="link"><a href="https://twitter.com">Twitter</a></div>
+				<div class="link"><a href="https://wikipedia.org">Wikipedia</a></div>
+				<div class="link"><a href="https://mail.google.com">GMail</a></div>
+				<div class="link"><a href="https://facebook.com">Facebook</a></div>
+				<div class="link"><a href="https://amazon.com">Amazon</a></div> 
+				<div class="link"><a href="https://www.pixiv.net">Pixiv</a></div> 
+				<div class="link"><a href="https://closed.pizza">ClosedVerse</a></div> 
+				<div class="link"><a href="https://roblox.com">Roblox.com</a></div>
+				<div class="link"><a href="https://minecraft.net">Minecraft.net</a></div>
+				<div class="link"><a href="http://zeldadungeon.net">ZeldaDungeon</a></div>
+				<div class="link"><a href="https://youtube.com">YouTube</a></div>
+				<div class="link"><a href="https://github.com">GitHub</a></div>
+				<div class="link"><a href="https://deviantart">DeviantArt</a></div>
+				<div class="link"><a href="https://wattpad.com">WattPad</a></div>
+				<div class="link"><a href="https://gdax.com">GDAX</a></div>
+				<div class="link"><a href="https://instagram.com">Instagram</a></div>
+				<div class="link"><a href="https://duckduckgo.com">DuckDuckGo</a></div>
+				<div class="link"><a href="https://yahoo.com">Yahoo</a></div>
+				<div class="link"><a href="https://bing.com">Bing</a></div>
+			</div><br>
+			`;
+			break;
+		}
+		case 'cancel':{
+			htmlContent = `<div>
+			<p><h2>Welcome to SwitchBru DNS.</h2><p>
+			<br>Redirection to Google cancelled. Welcome to our DNS server. 
+			<div><input type="submit" id="cancel-search" value="Continue to Google" onclick="google()" />
+			</div><span class="selected" up="cancel-search" left="outer-survey" down="discord-link"></span>
+			<br>
+			Find us at:<br><br><a href="https://discord.gg/y2ASN3K" id="discord-link" up="cancel-search" left="outer-links" right="irccloud"><i class="fab fa-discord"></i>   https://discord.gg/y2ASN3K</a>
+			<span>  and  </span>
+			<a href="https://www.irccloud.com/irc/freenode:2/channel/switchbru" id="irccloud" up="cancel-search" left="discord-link"><i class="far fa-comments"></i>   IRCCLOUD</a>
+			</div>`;
+			break;
+		}
+		case 'about':{
+			htmlContent = `<h2>About SwitchBru DNS server</h2>
+			This service is provided free of charge with no warranty whatsoever. The service does not store or retain any personal data. Besides providing the Google redirect for the Nintendo Switch, all DNS queries are handled via <a href="https://developers.google.com/speed/public-dns/">Google DNS</a>.
 <br><br>
 We are hosting this service as we believe that those of us that purchased an Internet-capable Switch should have the right to browse the web! We hope that one day Nintendo adds an official web browser to the console.
 <br><br>
 This server <b>does not currently block firmware updates</b>. If you are looking to block updates, you should use <a href="https://reswitched.tech/info/faq">ReSwitched DNS</a>, or stay offline.`;
-					break;
-				}
-			}
-			targetDiv.innerHTML = htmlContent;
-			var myDiv = document.getElementById('content');
-			myDiv.scrollTop = 0;
-		};
-		// time function
-		function checkTime(i) {
-			if (i < 10) {
-				i = "0" + i;
-			}
-			return i;
+			break;
 		}
-		function startTime() {
-			var today = new Date();
-			var h = today.getHours();
-			var m = today.getMinutes();
-			m = checkTime(m);
-			document.getElementById('time').innerHTML = h + ":" + m;
-			t = setTimeout(function() {
-				startTime()
-			}, 500);
-		}
-		startTime();	
-		// redirection countdown
-		window.onload = function(){
-			(function(){
-				var counter = 5;
-				setInterval(function() {
-					counter--;
-					if (counter >= 0) {
-						span = document.getElementById("count");
-						span.innerHTML = counter;
+	}
+	targetDiv.innerHTML = htmlContent;
+	var myDiv = document.getElementById('content');
+	myDiv.scrollTop = 0;
+};
+// time function
+function checkTime(i) {
+	if (i < 10) {
+		i = "0" + i;
+	}
+	return i;
+}
+function startTime() {
+	var today = new Date();
+	var h = today.getHours();
+	var m = today.getMinutes();
+	m = checkTime(m);
+	document.getElementById('time').innerHTML = h + ":" + m;
+	t = setTimeout(function() {
+		startTime()
+	}, 500);
+}
+startTime();	
+// redirection countdown
+window.onload = function(){
+	(function(){
+		var counter = 5;
+		setInterval(function() {
+			counter--;
+			if (counter >= 0 && ("#count").length) {
+				$("#count").html(counter);
+			}
+			if (counter === 5) {
+				clearInterval(counter);
+				//window.location.href = "https://www.google.com/webhp?nomo=1&hl=en";
+			}   
+		}, 1000);
+	})();
+
+}
+
+gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
+    switch (e.control) {
+		case "DPAD_UP":
+			if($(".selected").attr("up")) {
+				$(".selected").removeClass("selected").addClass("prevselected");
+				$("#"+$(".prevselected").attr("up")).addClass("selected");
+				$(".prevselected").removeClass("prevselected");
+			}
+			break;
+        case "DPAD_LEFT":
+            if($(".selected").attr("left")) {
+				$(".selected").removeClass("selected").addClass("prevselected");
+				$("#"+$(".prevselected").attr("left")).addClass("selected");
+				$(".prevselected").removeClass("prevselected");
+			}
+            break;
+        case "DPAD_RIGHT":
+            if($(".selected").attr("right")) {
+				$(".selected").removeClass("selected").addClass("prevselected");
+				$("#"+$(".prevselected").attr("right")).addClass("selected");
+				$(".prevselected").removeClass("prevselected");
+			}
+            break;
+        case "DPAD_DOWN":
+            if($(".selected").attr("down")) {
+				$(".selected").removeClass("selected").addClass("prevselected");
+				$("#"+$(".prevselected").attr("down")).addClass("selected");
+				$(".prevselected").removeClass("prevselected");
+			}
+            break;
+        case "FACE_2":
+            $(".selected").click();
+            break;
+    }
+});
+
+gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
+    dbt.innerHTML = "" + e.value + " | " + e.axis;
+	if(!$(".container").is(":hover")) {
+		switch (e.axis) {
+			case "LEFT_STICK_X":
+				if (e.value < -0.5) {
+					if($(".selected").attr("left")) {
+						$(".selected").removeClass("selected").addClass("prevselected");
+						$("#"+$(".prevselected").attr("left")).addClass("selected");
+						$(".prevselected").removeClass("prevselected");
 					}
-					if (counter === 0) {
-						clearInterval(counter);
-						window.location.href = "https://www.google.com/webhp?nomo=1&hl=en";
-					}   
-				}, 1000);
-			})();
+				} else if (e.value > 0.5) {
+					if($(".selected").attr("right")) {
+						$(".selected").removeClass("selected").addClass("prevselected");
+						$("#"+$(".prevselected").attr("right")).addClass("selected");
+						$(".prevselected").removeClass("prevselected");
+					}
+				}
+				break;
+			case "LEFT_STICK_Y":
+				if (e.value > 0.5) {
+					if($(".selected").attr("down")) {
+					$(".selected").removeClass("selected").addClass("prevselected");
+					$("#"+$(".prevselected").attr("down")).addClass("selected");
+					$(".prevselected").removeClass("prevselected");
+				}
+				} else if (e.value < -0.5) {
+					if($(".selected").attr("up")) {
+						$(".selected").removeClass("selected").addClass("prevselected");
+						$("#"+$(".prevselected").attr("up")).addClass("selected");
+						$(".prevselected").removeClass("prevselected");
+					}
+				}
+				break;
+		}
+    }
+});
 
-		}
-		//link specific functions
-		function google() {
-			window.location.href = "https://www.google.com/webhp?nomo=1&hl=en";
-		}
-		function loadurl() {
-			var input = document.getElementById("url").value;
-			
-			// add an http:// to the front if it's not present
-			if (input == "")
-				if (!input.toLowerCase().startsWith("http://") && !input.toLowerCase().startsWith("https://"))
-					input = "http://" + input;
-				window.location.href = input;
-		}
-		function survey() {
-			window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSewt6insjUEzg0dWV--n5OlDodk2Zflr3pbd4XWs6hEuZTzNg/viewform";
-		}
+//link specific functions
+function google() {
+	window.location.href = "https://www.google.com/webhp?nomo=1&hl=en";
+}
+function loadurl() {
+	var input = document.getElementById("url").value;
+	
+	// add an http:// to the front if it's not present
+	if (input == "")
+		if (!input.toLowerCase().startsWith("http://") && !input.toLowerCase().startsWith("https://"))
+			input = "http://" + input;
+		window.location.href = input;
+}
+function survey() {
+	window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSewt6insjUEzg0dWV--n5OlDodk2Zflr3pbd4XWs6hEuZTzNg/viewform";
+}
 
+function removeSelect() {
+	$(".selected").removeClass("selected");
+}

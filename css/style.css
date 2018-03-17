@@ -21,8 +21,7 @@
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
 	}
-	html,
-	body {
+	html, body {
 		padding: 0;
 		margin: 0;
 	}
@@ -40,9 +39,9 @@
 	}
 	/*animation for plulsation border*/
 	@keyframes border-pulsate {
-		0%   { border-color: rgba(0, 255, 255, 0.5); }
+		0%   { border-color: rgba(0, 255, 255, 0.3); }
 		50% { border-color: rgba(0, 255, 255, 1); }
-		100%   { border-color: rgba(0, 255, 255, 0.5); }
+		100%   { border-color: rgba(0, 255, 255, 0.3); }
 	}
 	/*menu item parent div*/
 	.outer{
@@ -64,7 +63,7 @@
 		-webkit-transition-timing-function: ease-in-out;
 		transition-timing-function: ease-in-out;
 		transition: 0.5s;
-		animation: border-pulsate 1.5s infinite;
+		animation: border-pulsate 1s infinite;
 	}
 	/*menu item inner div*/
 	.inner{
@@ -79,11 +78,11 @@
 		border-left-width: 3px;
 		border-left-color: var(--side-color);
 	}
-	.inner:hover{
+	.inner:hover, .outer.selected .inner {
 		border-left-color: var(--text-focus-color);
-		color:var(--text-focus-color);
+		color: var(--text-focus-color);
 	}
-	.inner-active{
+	.inner-active {
 		border-left-color: var(--text-focus-color);
 		color:var(--text-focus-color);	
 	}
@@ -103,7 +102,7 @@
 		will-change: overflow;
 	}
 	/*header css*/
-	.nav{
+	.nav {
 		display: flex;
 		align-items: center;
 		position: relative;
@@ -120,7 +119,7 @@
 		border-bottom-color: var(--text-color);
 		margin-left: 2.5%;
 	}
-	#nav:hover #icon{
+	#nav:hover #icon, #nav.selected #icon {
 		color:var(--text-focus-color);
 	}
 	.time {
@@ -135,9 +134,7 @@
 		padding-right:5%;
 	}
 	/*left side menu parent*/
-	.menu,
-	.middle,
-	.main {
+	.menu, .middle, .main {
 		overflow: auto;
 		height: auto;
 		padding: .5rem;
@@ -189,9 +186,12 @@
 		text-align:left;
 	}
 	.ytimg {
-		text-align: center;
-		width:10%;
-		height:10%;
+		display: block;
+		width: 40%;
+		height: 40%;
+		margin-left: auto;
+		margin-bottom: 5px;
+		margin-right: auto;
 	}
 	/*useful links flex-box control*/
 	.flex {
@@ -217,7 +217,7 @@
 		-webkit-transition-timing-function: ease-in-out;
 		transition-timing-function: ease-in-out;
 		transition: 0.5s;
-		animation: border-pulsate 1.5s infinite;
+		animation: border-pulsate 1.0s infinite;
 	}
 	/*text entry and submit button styling*/
 	input[type=text],input[type=url], select {
@@ -233,10 +233,7 @@
 		background-color: var(--main-color);
 		color: var(--text-color);
 	}
-	input[type=text]:focus,
-	input[type=text]:hover,
-	input[type=url]:focus,
-	input[type=url]:hover{
+	input[type=text]:focus, input[type=text]:hover, input[type=url]:focus, input[type=url]:hover, input[type=text].selected, input[type=url].selected {
 		outline: none;
 		border-color: var(--border-focus-color);
 		color:var(--text-focus-color);
@@ -244,7 +241,7 @@
 		-webkit-transition-timing-function: ease-in-out;
 		transition-timing-function: ease-in-out;
 		transition: 0.5s;
-		animation: border-pulsate 1.5s infinite;
+		animation: border-pulsate 1.0s infinite;
 	}
 	input[type=submit] {
 		font-size: 1.3em;
@@ -258,26 +255,18 @@
 		border-width: 3px;
 		border-color: var(--side-color);
 	}
-	input[type=submit]:hover {
+	input[type=submit]:hover, input[type=submit].selected, .outer.selected {
 		border-color: var(--border-focus-color);
-		color:var(--text-focus-color);
+		color: var(--text-focus-color);
 		background-color: var(--focus-background);
 		-webkit-transition-timing-function: ease-in-out;
 		transition-timing-function: ease-in-out;
 		transition: 0.5s;
-		animation: border-pulsate 1.5s infinite;
+		animation: border-pulsate 1.0s infinite;
 	}
-	li
-	{
+	li {
 		padding-bottom: 10px;
 	}
-
-	.clearfix:before,
-	.clearfix:after {
-		content: " ";
-		display: table;
-	}
-
-	.clearfix:after {
-		clear: both;
+	a.selected {
+		text-decoration: underline;
 	}
