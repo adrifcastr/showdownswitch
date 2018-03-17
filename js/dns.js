@@ -304,7 +304,8 @@ function UP() {
 			$(".selected .inner").click();
 		}
 	}
-	if($(".selected").attr("id") == ("7" || "8" || "9" )) {
+	var sID = $(".selected").attr("id");
+	if(sID == "7" || sID == "8" || sID == "9" ) {
 		$("#content").animate({
 			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3:first-of-type").offset().top 
 		}, 1000); 
@@ -344,7 +345,8 @@ function DOWN() {
 			$(".selected .inner").click();
 		}
 	}
-	if($(".selected").attr("id") == ("10" || "11" || "12" )) {
+	var sID = $(".selected").attr("id");
+	if(sID == "10" || sID == "11" || sID == "12" ) {
 		$("#content").animate({
 			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3:last-of-type").offset().top 
 		}, 1000); 
