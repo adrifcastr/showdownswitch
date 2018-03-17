@@ -197,6 +197,7 @@ window.onload = function(){
 
 gamepad.bind(Gamepad.Event.BUTTON_UP, function (e) {
     switch (e.control) {
+		alert(e.control);
 		case "DPAD_UP":
 			if($(".selected").attr("up")) {
 				$(".selected").removeClass("selected").addClass("prevselected");
