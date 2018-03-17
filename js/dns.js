@@ -51,8 +51,8 @@ function populateData(event){
 			For usage information, please visit the <a id="visit-website" href="http://switchbru.com/dns/" tabindex="-1" up="nav" left="outer-yt" down="survey">SwitchBru DNS website</a>.<br><br>
 			<form id="form" onsubmit="return false;">
 			<div style="googlesearch">
-			<input type="submit" id="survey" value="Take our survey" onclick="survey()" tabindex="-1" up="visit-website" left="outer-links"/><span class="selected" up="survey" left="outer-about" down="visit-website"></span>
-			</form>
+			<input type="submit" id="survey" value="Take our survey" onclick="survey()" tabindex="-1" up="visit-website" left="outer-links"/>
+			</form><span class="selected" up="survey" left="survey" down="survey" right="survey"></span>
 			</div></div>`;
 			break;
 		}
