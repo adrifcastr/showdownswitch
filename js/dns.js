@@ -10,7 +10,6 @@ var gamepad = new Gamepad();
 gamepad.init()
 var targetDiv = document.getElementById('content');
 var starting = true;
-var go = true;
 var htmlContent = '';
 var intro = '<div><p><h2>Welcome to SwitchBru DNS.</h2><p><br>Redirecting to <a id="google_link" href="https://www.google.com/webhp?nomo=1&hl=en" tabindex="-1" down="cancel" up="nav" left="outer-google">Google</a> in <span id="count">5</span> seconds. <div><input type="submit" class="selected" id="cancel" tabindex="-1" up="google_link" left="outer-google" value="Cancel Redirection" onclick="populateData(this.id)" /></div></div>';
 targetDiv.innerHTML = intro;
@@ -229,38 +228,47 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
     }
 });
 
-gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
-	switch (e.axis) {
-		case "LEFT_STICK_X":
-			if (e.value < -0.5) {
-				LEFT();
-			} else if (e.value > 0.5) {
-				RIGHT();
-			}
-			break;
-		case "RIGHT_STICK_X":
-			if (e.value < -0.5) {
-				LEFT();
-			} else if (e.value > 0.5) {
-				RIGHT();
-			}
-			break;
-		case "LEFT_STICK_Y":
-			if (e.value > 0.5) {
-				DOWN();
-			} else if (e.value < -0.5) {
-				UP();
-			}
-			break;
-		case "RIGHT_STICK_Y":
-			if (e.value > 0.5) {
-				DOWN();
-			} else if (e.value < -0.5) {
-				UP();
-			}
-			break;
-	}
-});
+var canGo = true, delay = 500;
+var changed = function (e) {
+	if (canGo) {
+        canGo = false;
+		switch (e.axis) {
+			case "LEFT_STICK_X":
+				if (e.value < -0.5) {
+					LEFT();
+				} else if (e.value > 0.5) {
+					RIGHT();
+				}
+				break;
+			case "RIGHT_STICK_X":
+				if (e.value < -0.5) {
+					LEFT();
+				} else if (e.value > 0.5) {
+					RIGHT();
+				}
+				break;
+			case "LEFT_STICK_Y":
+				if (e.value > 0.5) {
+					DOWN();
+				} else if (e.value < -0.5) {
+					UP();
+				}
+				break;
+			case "RIGHT_STICK_Y":
+				if (e.value > 0.5) {
+					DOWN();
+				} else if (e.value < -0.5) {
+					UP();
+				}
+				break;
+		}
+		setTimeout(function () {
+            canGo = true;
+        }, delay)
+};
+
+gamepad.bind(Gamepad.Event.AXIS_CHANGED, changed
+);
 
 //link specific functions
 function google() {
