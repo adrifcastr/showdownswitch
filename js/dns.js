@@ -425,5 +425,7 @@ function linkScroll() {
 			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3:last-of-type").offset().top 
 		}, 200); 
 	}
-	$(".select-next").attr("selectnext", sID);
+	if($(".link.selected").length) {
+		$(".select-next").attr("selectnext", sID);
+	}
 }
