@@ -283,7 +283,7 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 	}
 });
 
-$('body').on('click', '.outer', function(){
+$('body').on('click', '.menu', function(){
 	$("#content").focus();
 	$(".selected").removeClass("selected");
 	$(".next").addClass("selected");
