@@ -9,6 +9,7 @@ var starting = true;
 var cursor = false;
 var htmlContent = '';
 var selected;
+var touched = false;
 var intro = '<div><p><h2>Welcome to SwitchBru DNS.</h2><p><br>Redirecting to <a id="google_link" href="https://www.google.com/webhp?nomo=1&hl=en" tabindex="-1" down="cancel" up="nav" left="outer-google">Google</a> in <span id="count">5</span> seconds. <div><input type="submit" class="selected" id="cancel" tabindex="-1" up="google_link" left="outer-google" value="Cancel Redirection" onclick="populateData(this.id)" /></div></div>';
 targetDiv.innerHTML = intro;
 //option specific html
@@ -213,18 +214,15 @@ window.onload = function(){
 }
 
 function touched(id) {
-	if(!cursor) {
-		$(".inner").removeClass("inner-active");
-		$("#"+id+" .inner").addClass("inner-active");
-		$(".next").addClass("selected");
-		alert("TOUCHED");
-	}
+	$(".inner").removeClass("inner-active");
+	$("#"+id+" .inner").addClass("inner-active");
+	$(".next").addClass("selected");
+	touched = true;
 }
 
 gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
-	if($("body").is(":hover")) {
+	if($("body").is(":hover") && !touched) {
 		cursor = true;
-		alert("HOVERED");
 	}
 	if(cursor) {
 		$(".next").addClass("selected");
@@ -278,6 +276,9 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 			location.reload();
 			break;
     }
+	if(touched == true) {
+		touched = false;
+	}
 	cursor = false;
 });
 
