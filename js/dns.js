@@ -235,6 +235,7 @@ var lastTime = 0;
 
 gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 	var now = new Date().getTime();
+	$(".now").html(now - lastTime);
 	if (now - lastTime > 5000) {
 		lastTime = now;
 		switch (e.axis) {
