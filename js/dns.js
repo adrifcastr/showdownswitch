@@ -222,7 +222,7 @@ function touched(id) {
 }
 
 gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
-	if($(".hover:hover").length) {
+	if($(".touched:hover").length) {
 		cursor = false;
 		$(".next").html("HOVERING/TOUCHED");
 		$(".next").addClass("selected");
