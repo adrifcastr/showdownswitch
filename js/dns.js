@@ -218,7 +218,9 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
             DOWN();
             break;
         case "FACE_2":
-			if($(".selected.outer").length) {
+			if(cursor) {
+			}
+			else if($(".selected.outer").length) {
 				$(".selected").removeClass("selected");
 				$("#"+$(".select-next").attr("selectnext")).addClass("selected");
 			}
