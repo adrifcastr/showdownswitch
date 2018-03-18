@@ -236,6 +236,9 @@ gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 	else {
 		$(".next").html("false");
 	}
+	if(cursor && $(".touched:not(:hover)").length) {
+		$(".touched").removeClass("touched");
+	}
 });
 
 gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {

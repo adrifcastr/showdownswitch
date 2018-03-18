@@ -56,7 +56,7 @@ hr {
 	border-color: var(--side-color);
 	cursor: pointer;
 }
-.outer:hover{
+.outer:hover:not(.touched) {
 	border-color: var(--border-focus-color);
 	color:var(--text-focus-color);
 	background-color: var(--focus-background);
