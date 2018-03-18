@@ -214,15 +214,18 @@ window.onload = function(){
 }
 
 function touched(id) {
+	touched = true;
 	$(".inner").removeClass("inner-active");
 	$("#"+id+" .inner").addClass("inner-active");
 	$(".next").addClass("selected");
-	touched = true;
 }
 
 gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 	if($("body").is(":hover") && !touched) {
 		cursor = true;
+	}
+	if(touched) {
+		$(".next").html("TOUCHED");
 	}
 	if(cursor) {
 		$(".next").addClass("selected");
