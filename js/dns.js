@@ -283,11 +283,11 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 	}
 });
 
-//$('body').on('click', '.menu', function(){
-	//$("#content").focus();
-	//$(".selected").removeClass("selected");
-	//$(".next").addClass("selected");
-//});
+$('body').on('click', '.menu', function(){
+	$("#content").focus();
+	$(".selected").removeClass("selected");
+	$(".next").addClass("selected");
+});
 
 //link specific functions
 function google() {
@@ -317,7 +317,7 @@ function UP() {
 		$("#"+$(".prevselected").attr("up")).addClass("selected");
 		$(".prevselected").removeClass("prevselected");
 		if($(".selected.outer").length) {
-			$(".selected .inner").click();
+			populateData($(".selected .inner").attr("id"));
 		}
 	}
 	var sID = $(".selected").attr("id");
@@ -334,7 +334,7 @@ function LEFT() {
 		$("#"+$(".prevselected").attr("left")).addClass("selected");
 		$(".prevselected").removeClass("prevselected");
 		if($(".selected.outer").length && starting == true) {
-			$(".selected .inner").click();
+			populateData($(".selected .inner").attr("id"));
 			starting = false;
 		}
 	}
@@ -363,7 +363,7 @@ function DOWN() {
 		$("#"+$(".prevselected").attr("down")).addClass("selected");
 		$(".prevselected").removeClass("prevselected");
 		if($(".selected.outer").length) {
-			$(".selected .inner").click();
+			populateData($(".selected .inner").attr("id"));
 		}
 	}
 	var sID = $(".selected").attr("id");
