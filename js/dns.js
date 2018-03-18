@@ -236,7 +236,7 @@ var lastTime = 0;
 gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 	var now = new Date().getTime();
 	$(".now").html(now - lastTime);
-	if (now - lastTime > 500) {
+	if (now - lastTime > 300) {
 		switch (e.axis) {
 			case "LEFT_STICK_X":
 			case "RIGHT_STICK_X":
