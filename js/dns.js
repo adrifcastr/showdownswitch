@@ -283,11 +283,11 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 	}
 });
 
-$('body').on('click', '.menu', function(){
-	$("#content").focus();
-	$(".selected").removeClass("selected");
-	$(".next").addClass("selected");
-});
+//$('body').on('click', '.menu', function(){
+	//$("#content").focus();
+	//$(".selected").removeClass("selected");
+	//$(".next").addClass("selected");
+//});
 
 //link specific functions
 function google() {
