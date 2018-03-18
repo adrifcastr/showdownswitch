@@ -12,6 +12,7 @@ var targetDiv = document.getElementById('content');
 var starting = true;
 var cursor = false;
 var htmlContent = '';
+var selected;
 var intro = '<div><p><h2>Welcome to SwitchBru DNS.</h2><p><br>Redirecting to <a id="google_link" href="https://www.google.com/webhp?nomo=1&hl=en" tabindex="-1" down="cancel" up="nav" left="outer-google">Google</a> in <span id="count">5</span> seconds. <div><input type="submit" class="selected" id="cancel" tabindex="-1" up="google_link" left="outer-google" value="Cancel Redirection" onclick="populateData(this.id)" /></div></div>';
 targetDiv.innerHTML = intro;
 //option specific html
@@ -30,6 +31,7 @@ function populateData(event){
 			</div>
 			</form>
 			</div>`;
+			selected = "outer-google";
 			break;
 		}
 		case 'two':{
@@ -44,6 +46,7 @@ function populateData(event){
 			<br>
 			Enter a URL above and hit "Load Page".
 			</div>`;
+			selected = "outer-url";
 			break;
 		}
 		case 'three':{
@@ -55,6 +58,7 @@ function populateData(event){
 			<div style="googlesearch">
 			<input type="submit" id="survey" value="Take our survey" onclick="survey()" tabindex="-1" up="visit-website" left="outer-survey"/>
 			</form><span class="select-next" selectnext="visit-website"></span>`;
+			selected = "outer-survey";
 			break;
 		}
 		case 'four':{
@@ -87,6 +91,7 @@ Make sure you are accessing the page <b>through the share applet</b> in User set
 Using our page isn't necessary, but you do need a way to get this link to the "Share" applet somehow: <a href="https://sites.google.com/site/ytnintendoswitch/" tabindex="-1">https://sites.google.com/site/ytnintendoswitch/</a>
 
 <br><br><br></div>`;
+			selected = "outer-yt";
 			break;
 		}
 		case 'five':{
@@ -131,6 +136,7 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 				<div class="link" id="30" left="29" up="27"><a href="https://bing.com" tabindex="-1">Bing</a></div>
 			</div><span class="select-next" selectnext="1"></span><br>
 			`;
+			selected = "outer-links";
 			break;
 		}
 		case 'cancel':{
@@ -144,6 +150,7 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 			<span>  and  </span>
 			<a href="https://www.irccloud.com/irc/freenode:2/channel/switchbru" id="irccloud" tabindex="-1" up="cancel-search" left="discord-link"><i class="far fa-comments"></i>   IRCCLOUD</a>
 			</div>`;
+			selected = "outer-google";
 			break;
 		}
 		case 'about':{
@@ -153,12 +160,14 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 We are hosting this service as we believe that those of us that purchased an Internet-capable Switch should have the right to browse the web! We hope that one day Nintendo adds an official web browser to the console.
 <br><br>
 This server <b>does not currently block firmware updates</b>. If you are looking to block updates, you should use <a href="https://reswitched.tech/info/faq" tabindex="-1" id="faq" up="google-dns" left="outer-about">ReSwitched DNS</a>, or stay offline.<span class="select-next" selectnext="google-dns"></span>`;
+			selected = "outer-about";
 			break;
 		}
 	}
 	targetDiv.innerHTML = htmlContent;
 	var myDiv = document.getElementById('content');
 	myDiv.scrollTop = 0;
+	$(".next").attr("up", selected).attr("down", selected).attr("left", selected).attr("right", selected);
 };
 // time function
 function checkTime(i) {
