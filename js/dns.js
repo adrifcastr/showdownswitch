@@ -9,7 +9,6 @@ var starting = true;
 var cursor = false;
 var htmlContent = '';
 var selected;
-var isTouched = false;
 var intro = '<div><p><h2>Welcome to SwitchBru DNS.</h2><p><br>Redirecting to <a id="google_link" href="https://www.google.com/webhp?nomo=1&hl=en" tabindex="-1" down="cancel" up="nav" left="outer-google">Google</a> in <span id="count">5</span> seconds. <div><input type="submit" class="selected" id="cancel" tabindex="-1" up="google_link" left="outer-google" value="Cancel Redirection" onclick="populateData(this.id)" /></div></div>';
 targetDiv.innerHTML = intro;
 //option specific html
@@ -215,7 +214,6 @@ window.onload = function(){
 
 function touched(id) {
 	$("#"+id).addClass("touched");
-	isTouched = true;
 	$(".inner").removeClass("inner-active");
 	$("#"+id+" .inner").addClass("inner-active");
 	$(".next").addClass("selected");
@@ -224,17 +222,26 @@ function touched(id) {
 gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 	if($(".touched:hover").length) {
 		cursor = false;
-		$(".next").html("HOVERING/TOUCHED");
 	}
-	else if($("body:hover").length && !isTouched) {
+	else if($("body:hover").length) {
 		cursor = true;
+		if($("#cancel").length) {
+			$(".next").attr("up", "#cancel").attr("down", "#cancel").attr("left", "#cancel").attr("right", "#cancel");
+		}
+		else if($("#cancel-search").length) {
+			$(".next").attr("up", "#cancel-search").attr("down", "#cancel-search").attr("left", "#cancel-search").attr("right", "#cancel-search");
+		}
 	}
 	else if(cursor) {
 		$(".next").addClass("selected");
-		$(".next").html("true");
 	}
 	else {
-		$(".next").html("false");
+		if($("#cancel").length) {
+			$("#cancel").addClass("selected");
+		}
+		else if($("#cancel-search").length) {
+			$("#cancel-search").addClass("selected");
+		}
 	}
 	if(cursor && $(".touched:not(:hover)").length) {
 		$(".touched").removeClass("touched");
