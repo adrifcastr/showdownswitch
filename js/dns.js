@@ -287,6 +287,8 @@ $('body').on('click', '.outer', function(){
 	$("#content").focus();
 	$(".selected").removeClass("selected");
 	$(".next").addClass("selected");
+	var html = $(".next")[0].outerHTML;
+	alert(html);
 });
 
 //link specific functions
