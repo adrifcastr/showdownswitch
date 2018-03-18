@@ -237,9 +237,11 @@ gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 	}
 	else {
 		if($("#cancel").length) {
+			$(".selected").removeClass("selected");
 			$("#cancel").addClass("selected");
 		}
 		else if($("#cancel-search").length) {
+			$(".selected").removeClass("selected");
 			$("#cancel-search").addClass("selected");
 		}
 	}
@@ -395,7 +397,12 @@ function DOWN() {
 
 function linkScroll() {
 	var sID = $(".selected").attr("id");
-	if(sID == "4" || sID == "5" || sID == "6" ) {
+	if(sID == "1" || sID == "2" || sID == "3" ) {
+		$("#content").animate({
+			scrollTop:  0
+		}, 200); 
+	}
+	else if(sID == "4" || sID == "5" || sID == "6" ) {
 		$("#content").animate({
 			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3:first-of-type").offset().top 
 		}, 200); 
