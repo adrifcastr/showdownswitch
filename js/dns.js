@@ -52,7 +52,7 @@ function populateData(event){
 			This is a survey to collect information on the usage of the SwitchBru DNS server (45.55.142.122).<br><br>
 			We have made some design changes recently, and would like to better understand how people use the DNS service.<br><br>
 			For usage information, please visit the <a id="visit-website" href="http://switchbru.com/dns/" tabindex="-1" up="nav" left="outer-survey" down="survey">SwitchBru DNS website</a>.<br><br>
-			<form id="form" onsubmit="return survey()">
+			<form id="form" action="https://docs.google.com/forms/d/e/1FAIpQLSewt6insjUEzg0dWV--n5OlDodk2Zflr3pbd4XWs6hEuZTzNg/viewform">
 			<div style="googlesearch">
 			<input type="submit" id="survey" value="Take our survey" onclick="survey()" tabindex="-1" up="visit-website" left="outer-survey"/>
 			</form><span class="select-next" selectnext="survey"></span>`;
@@ -219,6 +219,7 @@ gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 	if(cursor) {
 		$(".next").addClass("selected");
 	}
+	$(".next").html(cursor.toString);
 });
 
 gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
@@ -242,6 +243,9 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 			else if($(".selected.outer").length) {
 				$(".selected").removeClass("selected");
 				$("#"+$(".select-next").attr("selectnext")).addClass("selected");
+			}
+			else if($("#survey.selected").length) {
+				survey();
 			}
 			else if($("input[type=text].selected, input[type=url].selected").length) {
 				$(".selected").focus();
