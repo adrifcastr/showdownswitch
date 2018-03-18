@@ -226,10 +226,10 @@ gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 	else if($("body:hover").length) {
 		cursor = true;
 		if($("#cancel").length) {
-			$(".next").attr("up", "#cancel").attr("down", "#cancel").attr("left", "#cancel").attr("right", "#cancel");
+			$(".next").attr("up", "cancel").attr("down", "cancel").attr("left", "cancel").attr("right", "cancel");
 		}
 		else if($("#cancel-search").length) {
-			$(".next").attr("up", "#cancel-search").attr("down", "#cancel-search").attr("left", "#cancel-search").attr("right", "#cancel-search");
+			$(".next").attr("up", "cancel-search").attr("down", "cancel-search").attr("left", "cancel-search").attr("right", "cancel-search");
 		}
 	}
 	else if(cursor) {
@@ -354,12 +354,7 @@ function UP() {
 			populateData($(".selected .inner").attr("id"));
 		}
 	}
-	var sID = $(".selected").attr("id");
-	if(sID == "7" || sID == "8" || sID == "9" ) {
-		$("#content").animate({
-			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3:first-of-type").offset().top 
-		}, 1000); 
-	}
+	linkScroll();
 }
 
 function LEFT() {
@@ -371,11 +366,6 @@ function LEFT() {
 			populateData($(".selected .inner").attr("id"));
 			starting = false;
 		}
-	}
-	if($("#outer-links.selected").length) {
-		$("#content").animate({
-			scrollTop: 0
-		}, 500);
 	}
 }
 
@@ -400,10 +390,40 @@ function DOWN() {
 			populateData($(".selected .inner").attr("id"));
 		}
 	}
+	linkScroll();
+}
+
+function linkScroll() {
 	var sID = $(".selected").attr("id");
-	if(sID == "10" || sID == "11" || sID == "12" ) {
+	if(sID == "4" || sID == "5" || sID == "6" ) {
+		$("#content").animate({
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3:first-of-type").offset().top 
+		}, 200); 
+	}
+	else if(sID == "7" || sID == "8" || sID == "9" ) {
+		$("#content").animate({
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content link#1").offset().top 
+		}, 200); 
+	}
+	else if(sID == "10" || sID == "11" || sID == "12" ) {
+		$("#content").animate({
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content link#4").offset().top 
+		}, 200); 
+	}
+	else if(sID == "13" || sID == "14" || sID == "15" ) {
+		$("#content").animate({
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content link#7").offset().top 
+		}, 200); 
+	}
+	else if(sID == "16" || sID == "17" || sID == "18" ) {
+		$("#content").animate({
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content br:first-of-type").offset().top 
+		}, 200); 
+	}
+	else if(sID == "19" || sID == "20" || sID == "21" ) {
 		$("#content").animate({
 			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3:last-of-type").offset().top 
-		}, 1000); 
+		}, 200); 
 	}
+	$(".select-next").attr("selectnext", sID);
 }
