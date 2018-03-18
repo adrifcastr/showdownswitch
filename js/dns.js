@@ -215,7 +215,7 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 				$(".selected").removeClass("selected");
 				$("#"+$(".select-next").attr("selectnext")).addClass("selected");
 			}
-			else if($("input[type=text].selected, input[type=url].selected")) {
+			else if($("input[type=text].selected, input[type=url].selected").length) {
 				$(".selected").focus();
 			}
 			else if($("#nav.selected").length) {
@@ -235,8 +235,7 @@ var lastTime = 0;
 
 gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 	var now = new Date().getTime();
-	$(".now").html(now - lastTime);
-	if (now - lastTime > 300) {
+	if (now - lastTime > 200) {
 		switch (e.axis) {
 			case "LEFT_STICK_X":
 			case "RIGHT_STICK_X":
