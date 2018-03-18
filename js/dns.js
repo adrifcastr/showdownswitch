@@ -222,10 +222,10 @@ function touched(id) {
 }
 
 gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
-	if($(".hover").is(":hover")) {
+	if($(".hover:hover").length) {
 		cursor = false;
 	}
-	else if($("body").is(":hover") && !isTouched) {
+	else if($("body:hover").length && !isTouched) {
 		cursor = true;
 	}
 	if(isTouched) {
@@ -238,7 +238,6 @@ gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 	else {
 		$(".next").html("false");
 	}
-	
 });
 
 gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
