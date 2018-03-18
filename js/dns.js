@@ -1,11 +1,7 @@
-//Javascript to manipulate switchbru dns UI by pwsincd
+//Javascript to manipulate SwitchBru DNS UI by pwsincd
+//With gamepad support added by Ep8Script
 //
-//sidebar highlighting
-$('.inner').click(function(){
-	$('.inner').removeClass('inner-active');
-	$(this).addClass('inner-active');
-});
-//set variabless
+//set variables
 var gamepad = new Gamepad();
 gamepad.init()
 var targetDiv = document.getElementById('content');
@@ -31,6 +27,7 @@ function populateData(event){
 			</div>
 			</form>
 			</div>`;
+			$(".title").html("Google");
 			selected = "outer-google";
 			break;
 		}
@@ -46,6 +43,7 @@ function populateData(event){
 			<br>
 			Enter a URL above and hit "Load Page".
 			</div>`;
+			$(".title").html("Enter URL");
 			selected = "outer-url";
 			break;
 		}
@@ -57,8 +55,9 @@ function populateData(event){
 			<form id="form" onsubmit="return survey()">
 			<div style="googlesearch">
 			<input type="submit" id="survey" value="Take our survey" onclick="survey()" tabindex="-1" up="visit-website" left="outer-survey"/>
-			</form><span class="select-next" selectnext="visit-website"></span>`;
+			</form><span class="select-next" selectnext="survey"></span>`;
 			selected = "outer-survey";
+			$(".title").html("Usage Survey");
 			break;
 		}
 		case 'four':{
@@ -91,6 +90,7 @@ Make sure you are accessing the page <b>through the share applet</b> in User set
 Using our page isn't necessary, but you do need a way to get this link to the "Share" applet somehow: <a href="https://sites.google.com/site/ytnintendoswitch/" tabindex="-1">https://sites.google.com/site/ytnintendoswitch/</a>
 
 <br><br><br></div>`;
+			$(".title").html("YouTube");
 			selected = "outer-yt";
 			break;
 		}
@@ -136,6 +136,7 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 				<div class="link" id="30" left="29" up="27"><a href="https://bing.com" tabindex="-1">Bing</a></div>
 			</div><span class="select-next" selectnext="1"></span><br>
 			`;
+			$(".title").html("Useful Links");
 			selected = "outer-links";
 			break;
 		}
@@ -160,6 +161,7 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 We are hosting this service as we believe that those of us that purchased an Internet-capable Switch should have the right to browse the web! We hope that one day Nintendo adds an official web browser to the console.
 <br><br>
 This server <b>does not currently block firmware updates</b>. If you are looking to block updates, you should use <a href="https://reswitched.tech/info/faq" tabindex="-1" id="faq" up="google-dns" left="outer-about">ReSwitched DNS</a>, or stay offline.<span class="select-next" selectnext="google-dns"></span>`;
+			$(".title").html("About");
 			selected = "outer-about";
 			break;
 		}
@@ -168,6 +170,11 @@ This server <b>does not currently block firmware updates</b>. If you are looking
 	var myDiv = document.getElementById('content');
 	myDiv.scrollTop = 0;
 	$(".next").attr("up", selected).attr("down", selected).attr("left", selected).attr("right", selected);
+	//sidebar highlighting
+	if(event !== "cancel" || event !== "about") {
+		$('.inner').removeClass('inner-active');
+		$(event).addClass('inner-active');
+	}
 };
 // time function
 function checkTime(i) {
@@ -249,6 +256,9 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 				$(".selected").click();
 			}
             break;
+		case "FACE_4":
+			location.reload();
+			break;
     }
 	cursor = false;
 });
@@ -340,7 +350,7 @@ function LEFT() {
 	}
 	if($("#outer-links.selected").length) {
 		$("#content").animate({
-			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3:first-of-type").offset().top 
+			scrollTop: 0
 		}, 500);
 	}
 }
