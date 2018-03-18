@@ -225,11 +225,12 @@ gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 	if($(".hover:hover").length) {
 		cursor = false;
 		$(".next").html("HOVERING/TOUCHED");
+		$(".next").addClass("selected");
 	}
 	else if($("body:hover").length && !isTouched) {
 		cursor = true;
 	}
-	if(cursor) {
+	else if(cursor) {
 		$(".next").addClass("selected");
 		$(".next").html("true");
 	}
