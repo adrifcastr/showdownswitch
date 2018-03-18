@@ -33,6 +33,9 @@ a {
 	color: var(--text-focus-color);
 	text-decoration: inherit;
 }
+a:hover {
+	text-decoration: underline;
+}
 hr {
 	width: 95%;
 	color:var(--text-color);
