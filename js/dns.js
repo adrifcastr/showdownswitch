@@ -402,17 +402,17 @@ function linkScroll() {
 	}
 	else if(sID == "7" || sID == "8" || sID == "9" ) {
 		$("#content").animate({
-			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content link#1").offset().top 
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content .link#1").offset().top 
 		}, 200); 
 	}
 	else if(sID == "10" || sID == "11" || sID == "12" ) {
 		$("#content").animate({
-			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content link#4").offset().top 
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content .link#4").offset().top 
 		}, 200); 
 	}
 	else if(sID == "13" || sID == "14" || sID == "15" ) {
 		$("#content").animate({
-			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content link#7").offset().top 
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content .link#7").offset().top 
 		}, 200); 
 	}
 	else if(sID == "16" || sID == "17" || sID == "18" ) {
