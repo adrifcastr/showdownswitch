@@ -240,16 +240,6 @@ gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 		$(".selected").removeClass("selected");
 		$(".next").addClass("selected");
 	}
-	else {
-		if($("#cancel").length) {
-			$(".selected").removeClass("selected");
-			$("#cancel").addClass("selected");
-		}
-		else if($("#cancel-search").length) {
-			$(".selected").removeClass("selected");
-			$("#cancel-search").addClass("selected");
-		}
-	}
 	if(cursor && $(".touched:not(:hover)").length) {
 		$(".touched").removeClass("touched");
 	}
