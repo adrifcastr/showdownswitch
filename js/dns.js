@@ -37,7 +37,7 @@ function populateData(event){
 			<br><br>
 			<form id="form" onsubmit="return false;">
 			<div style="googlesearch">
-			<input type="url" name="q" size="25" maxlength="255" id="url" value="" placeholder="Enter your URL..." tabindex="-1" up="nav" left="outer-url" down="load-page" onclick="touched(this.id)/>
+			<input type="url" name="q" size="25" maxlength="255" id="url" value="" placeholder="Enter your URL..." tabindex="-1" up="nav" left="outer-url" down="load-page" onclick="touched(this.id)"/>
 			<input type="submit" id="load-page" value="Load Page" onclick="loadurl(url)" tabindex="-1" up="url" left="outer-urls" />
 			</form><span class="select-next" selectnext="url"></span>
 			</div>
@@ -129,7 +129,7 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 				<div class="link" id="22" left="outer-links" up="19" right="23" down="25"><a href="https://youtube.com" tabindex="-1">YouTube</a></div>
 				<div class="link" id="23" left="22" up="20" right="24" down="26"><a href="https://github.com" tabindex="-1">GitHub</a></div>
 				<div class="link" id="24" left="23" up="21" down="27"><a href="https://deviantart" tabindex="-1">DeviantArt</a></div>
-				<div class="link" id="25" left="outer-links" up="22" down="28"><a href="https://wattpad.com" tabindex="-1">WattPad</a></div>
+				<div class="link" id="25" left="outer-links" up="22" right="26" down="28"><a href="https://wattpad.com" tabindex="-1">WattPad</a></div>
 				<div class="link" id="26" left="25" up="23" right="27" down="29"><a href="https://gdax.com" tabindex="-1">GDAX</a></div>
 				<div class="link" id="27" left="26" up="24" down="30"><a href="https://instagram.com" tabindex="-1">Instagram</a></div>
 				<div class="link" id="28" left="outer-links" up="25" right="29"><a href="https://duckduckgo.com" tabindex="-1">DuckDuckGo</a></div>
@@ -273,6 +273,7 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 			else if($(".selected.outer").length) {
 				$(".selected").removeClass("selected");
 				$("#"+$(".select-next").attr("selectnext")).addClass("selected");
+				change = false;
 			}
 			else if($("#survey.selected").length) {
 				survey();
@@ -479,6 +480,5 @@ function linkScroll() {
 	}
 	if($("#four.inner-active").length) {
 		$(".select-next").attr("selectnext", sID);
-		change = false;
 	}
 }
