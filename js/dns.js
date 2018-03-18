@@ -227,7 +227,7 @@ gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 	if(isTouched) {
 		$(".next").html("TOUCHED");
 	}
-	if(cursor) {
+	else if(cursor) {
 		$(".next").addClass("selected");
 		$(".next").html("true");
 	}
