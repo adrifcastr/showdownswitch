@@ -66,7 +66,7 @@ hr {
 	animation: border-pulsate 1s infinite;
 }
 /*menu item inner div*/
-.inner{
+.inner {
 	padding-left: 2%;
 	color:var(--text-color);
 	-webkit-box-sizing: border-box;
@@ -78,7 +78,7 @@ hr {
 	border-left-width: 3px;
 	border-left-color: var(--side-color);
 }
-.inner:not(:focus):hover, .outer.selected .inner {
+.inner:not(:focus):not(.touched):hover, .outer.selected .inner {
 	border-left-color: var(--text-focus-color);
 	color: var(--text-focus-color);
 }
