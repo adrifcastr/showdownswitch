@@ -212,9 +212,19 @@ window.onload = function(){
 
 }
 
+function touched(id) {
+	if(!cursor) {
+		$(".inner").removeClass("inner-active");
+		$("#"+id+" .inner").addClass("inner-active");
+		$(".next").addClass("selected");
+		alert("TOUCHED");
+	}
+}
+
 gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 	if($("body").is(":hover")) {
 		cursor = true;
+		alert("HOVERED");
 	}
 	if(cursor) {
 		$(".next").addClass("selected");
@@ -300,20 +310,6 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 		}
 	}
 });
-
-$('body').on('click', '.menu', function(){
-	$("#content").focus();
-	$(".selected").removeClass("selected");
-	$(".next").addClass("selected");
-});
-
-function touched(id) {
-	if(!cursor) {
-		$(".inner").removeClass("inner-active");
-		$("#"+id+" .inner").addClass("inner-active");
-		$(".next").addClass("selected");
-	}
-}
 
 //link specific functions
 function google() {
