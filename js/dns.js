@@ -61,8 +61,8 @@ function populateData(event){
 			break;
 		}
 		case 'four':{
-			htmlContent = `<div class="youtube"><img class="ytimg" src="images/SwitchTube.png"><div><span id="first-para" left="outer-yt" up="gbatemp-thread" down="instructions">Thanks to Ep8Script on GBATemp, there is now a way to watch YouTube videos on your Switch! There is a thread about it <a href="https://gbatemp.net/threads/tool-website-for-watching-most-youtube-videos-on-the-switch.494796/" id="gbatemp-thread" tabindex="-1" down="first-para" left="outer-yt">here</a>.</span><br><br>
-
+			htmlContent = `<div class="youtube"><img class="ytimg" src="images/SwitchTube.png"><div><span id="first-para" left="outer-yt" up="gbatemp-thread" down="instructions">Thanks to Ep8Script on GBATemp, there is now a way to watch YouTube videos on your Switch! There is a thread about it <a href="https://gbatemp.net/threads/tool-website-for-watching-most-youtube-videos-on-the-switch.494796/" id="gbatemp-thread" tabindex="-1" down="first-para" left="outer-yt">here</a>.</span>
+			<br><br>
 <h3 id="instructions" left="outer-yt" up-"first-para" down="sb-fb">Instructions</h3>
 <font color="red">You cannot watch videos using the DNS trick.</font> Nintendo has blocked video playback in the wifi login applet.<br><br>
 
@@ -439,7 +439,7 @@ function linkScroll() {
 	}
 	else if(sID == "instructions") {
 		$("#content").animate({
-			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content br:first-of-type").offset().top
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content #instructions").offset().top
 		}, 300); 
 	}
 	else if(sID == "sb-fb") {
