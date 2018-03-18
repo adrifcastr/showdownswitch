@@ -442,7 +442,7 @@ function linkScroll() {
 			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content br:first-of-type").offset().top
 		}, 300); 
 	}
-	else if(sID == "sb-fb")
+	else if(sID == "sb-fb") {
 		$("#content").animate({
 			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content #in-order").offset().top
 		}, 250); 
