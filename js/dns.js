@@ -173,7 +173,7 @@ This server <b>does not currently block firmware updates</b>. If you are looking
 	//sidebar highlighting
 	if(event !== "cancel" || event !== "about") {
 		$('.inner').removeClass('inner-active');
-		$(event).addClass('inner-active');
+		$("#"+event).addClass('inner-active');
 	}
 };
 // time function
@@ -256,7 +256,7 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 				$(".selected").click();
 			}
             break;
-		case "FACE_4":
+		case "FACE_3":
 			location.reload();
 			break;
     }
@@ -299,6 +299,14 @@ $('body').on('click', '.menu', function(){
 	$(".next").addClass("selected");
 });
 
+function touched(id) {
+	if(!cursor) {
+		$(".inner").removeClass("inner-active");
+		$("#"+id+" .inner").addClass("inner-active");
+		$(".next").addClass("selected");
+	}
+}
+
 //link specific functions
 function google() {
 	window.location.href = "https://www.google.com/webhp?nomo=1&hl=en";
@@ -306,7 +314,7 @@ function google() {
 function loadurl() {
 	var input = document.getElementById("url").value;
 	
-	// add an http:// to the front if it's not present
+	// add http:// to the front if it's not present
 	if (input == "")
 		if (!input.toLowerCase().startsWith("http://") && !input.toLowerCase().startsWith("https://"))
 			input = "http://" + input;
