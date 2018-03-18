@@ -224,19 +224,17 @@ function touched(id) {
 gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 	if($(".hover:hover").length) {
 		cursor = false;
+		$(".next").html("HOVERING/TOUCHED");
 	}
 	else if($("body:hover").length && !isTouched) {
 		cursor = true;
 	}
-	if(isTouched) {
-		$(".next").html("TOUCHED");
-	}
-	else if(cursor) {
+	if(cursor) {
 		$(".next").addClass("selected");
 		$(".next").html("true");
 	}
 	else {
-		$(".next").html("false");
+		//$(".next").html("false");
 	}
 });
 
@@ -282,9 +280,6 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 			location.reload();
 			break;
     }
-	if(isTouched == true) {
-		isTouched = false;
-	}
 	cursor = false;
 });
 
