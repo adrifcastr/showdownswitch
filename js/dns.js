@@ -242,19 +242,21 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 			case "RIGHT_STICK_X":
 				if (e.value < -0.5) {
 					LEFT();
+					lastTime = now;
 				} else if (e.value > 0.5) {
 					RIGHT();
+					lastTime = now;
 				}
-				lastTime = now;
 				break;
 			case "LEFT_STICK_Y":
 			case "RIGHT_STICK_Y":
 				if (e.value > 0.5) {
 					DOWN();
+					lastTime = now;
 				} else if (e.value < -0.5) {
 					UP();
+					lastTime = now;
 				}
-				lastTime = now;
 				break;
 		}
 	}
