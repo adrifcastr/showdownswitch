@@ -219,7 +219,7 @@ gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 	if(cursor) {
 		$(".next").addClass("selected");
 	}
-	$(".next").html(cursor.toString);
+	$(".next").html(cursor);
 });
 
 gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
