@@ -196,6 +196,12 @@ window.onload = function(){
 
 }
 
+gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
+	if(cursor) {
+		$(".next").addClass("selected");
+	}
+});
+
 gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 	$(".spanbuttons").append(e.control);
     switch (e.control) {
