@@ -197,6 +197,9 @@ window.onload = function(){
 }
 
 gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
+	if($("body").is(":hover")) {
+		cursor = true;
+	}
 	if(cursor) {
 		$(".next").addClass("selected");
 	}
@@ -268,7 +271,6 @@ gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 				}
 				break;
 		}
-		cursor = false;
 	}
 });
 
