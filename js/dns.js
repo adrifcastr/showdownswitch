@@ -218,10 +218,11 @@ function touched(id) {
 	$(".inner").removeClass("inner-active");
 	$("#"+id+" .inner").addClass("inner-active");
 	$(".next").addClass("selected");
+	$("#"+id).addClass("touched");
 }
 
 gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
-	if($("body").is(":hover") && !isTouched) {
+	if($("body:not(.touched)").is(":hover") && !isTouched) {
 		cursor = true;
 	}
 	if(isTouched) {
