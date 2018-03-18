@@ -222,7 +222,7 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
 				location.reload();
 			}
 			else if($(".selected.link").length) {
-				location.href = $(".selected a").attr("href");
+				window.location.href = $(".selected a").attr("href");
 			}
 			else {
 				$(".selected").click();
@@ -236,7 +236,7 @@ var lastTime = 0;
 gamepad.bind(Gamepad.Event.AXIS_CHANGED, function (e) {
 	var now = new Date().getTime();
 	$(".now").html(now - lastTime);
-	if (now - lastTime > 5000) {
+	if (now - lastTime > 500) {
 		lastTime = now;
 		switch (e.axis) {
 			case "LEFT_STICK_X":
