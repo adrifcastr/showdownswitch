@@ -214,15 +214,18 @@ window.onload = function(){
 }
 
 function touched(id) {
+	$("#"+id).addClass("touched");
 	isTouched = true;
 	$(".inner").removeClass("inner-active");
 	$("#"+id+" .inner").addClass("inner-active");
 	$(".next").addClass("selected");
-	$("#"+id).addClass("touched");
 }
 
 gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
-	if($("body:not(.touched)").is(":hover") && !isTouched) {
+	if($(".hover").is(":hover")) {
+		cursor = false;
+	}
+	else if($("body").is(":hover") && !isTouched) {
 		cursor = true;
 	}
 	if(isTouched) {
