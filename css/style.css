@@ -78,7 +78,7 @@ hr {
 	border-left-width: 3px;
 	border-left-color: var(--side-color);
 }
-.inner:not(:focus):not(.touched):hover, .outer.selected .inner {
+.outer:not(.touched) .inner:not(:focus):hover, .outer.selected .inner {
 	border-left-color: var(--text-focus-color);
 	color: var(--text-focus-color);
 }
