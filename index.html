@@ -10,7 +10,7 @@
 	<script src="js/gamepad.js"></script>
 	<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body onmouseover="removeSelect()">
 	<div class="nav" id="nav" down="outer-google" onclick="populateData(this.id)">
 		<p><i id="icon" class="fab fa-hubspot"></i>  SwitchBru DNS</p>
 		<div class ="time">
@@ -18,7 +18,7 @@
 		</div>
 		<span class="next" down="outer-google" up="outer-google" left="outer-google" right="outer-google"></span>
 	</div>
-	<div class="container" onmouseover="removeSelect()">
+	<div class="container">
 		<!--<hr>-->
 		<div class="menu">
 			<div class="outer" id="outer-google" up="nav" down="outer-url">
