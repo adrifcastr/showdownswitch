@@ -225,7 +225,6 @@ gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 	if($(".touched:hover").length) {
 		cursor = false;
 		$(".next").html("HOVERING/TOUCHED");
-		$(".next").addClass("selected");
 	}
 	else if($("body:hover").length && !isTouched) {
 		cursor = true;
@@ -235,7 +234,7 @@ gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 		$(".next").html("true");
 	}
 	else {
-		//$(".next").html("false");
+		$(".next").html("false");
 	}
 });
 
