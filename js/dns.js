@@ -9,7 +9,7 @@ var starting = true;
 var cursor = false;
 var htmlContent = '';
 var selected;
-var intro = '<div><p><h2>Welcome to SwitchBru DNS.</h2><p><br>Redirecting to <a id="google_link" href="https://www.google.com/webhp?nomo=1&hl=en" tabindex="-1" down="cancel" up="nav" left="outer-google">Google</a> in <span id="count">5</span> seconds. <div><input type="submit" class="selected" id="cancel" tabindex="-1" up="google_link" left="outer-google" value="Cancel Redirection" onclick="populateData(this.id)" /></div></div>';
+var intro = '<div><p><h2>Welcome to SwitchBru DNS.</h2><p><br>Redirecting to <a id="google-link" href="https://www.google.com/webhp?nomo=1&hl=en" tabindex="-1" down="cancel" up="nav" left="outer-google">Google</a> in <span id="count">5</span> seconds. <div><input type="submit" class="selected" id="cancel" tabindex="-1" up="google-link" left="outer-google" value="Cancel Redirection" onclick="populateData(this.id)" /></div></div>';
 targetDiv.innerHTML = intro;
 //option specific html
 function populateData(event){
@@ -23,7 +23,7 @@ function populateData(event){
 			<br><br>
 			<form method="get" action="http://www.google.com/search">
 			<div style="googlesearch">
-			<input type="text" id="search-google" name="q" size="25" maxlength="255" value="" placeholder="Enter your search query..." tabindex="-1" up="nav" left="outer-google" down="google-button" /> <input type="submit" id="google-button" tabindex="-1" up="search-google" left="outer-google" value="Google Search" /><span class="select-next" selectnext="search-google"></span>
+			<input type="text" id="search-google" name="q" size="25" maxlength="255" value="" placeholder="Enter your search query..." tabindex="-1" up="nav" left="outer-google" down="google-button" onclick="touched(this.id)" /> <input type="submit" id="google-button" tabindex="-1" up="search-google" left="outer-google" value="Google Search" /><span class="select-next" selectnext="search-google"></span>
 			</div>
 			</form>
 			</div>`;
@@ -36,7 +36,7 @@ function populateData(event){
 			<br><br>
 			<form id="form" onsubmit="return false;">
 			<div style="googlesearch">
-			<input type="url" name="q" size="25" maxlength="255" id="url" value="" placeholder="Enter your URL..." tabindex="-1" up="nav" left="outer-url" down="load-page" />
+			<input type="url" name="q" size="25" maxlength="255" id="url" value="" placeholder="Enter your URL..." tabindex="-1" up="nav" left="outer-url" down="load-page" onclick="touched(this.id)/>
 			<input type="submit" id="load-page" value="Load Page" onclick="loadurl(url)" tabindex="-1" up="url" left="outer-urls" />
 			</form><span class="select-next" selectnext="url"></span>
 			</div>
@@ -227,12 +227,17 @@ gamepad.bind(Gamepad.Event.TICK, function (gamepads) {
 		cursor = true;
 		if($("#cancel").length) {
 			$(".next").attr("up", "cancel").attr("down", "cancel").attr("left", "cancel").attr("right", "cancel");
+			$(".selected").removeClass("selected");
+			$(".next").addClass("selected");
 		}
 		else if($("#cancel-search").length) {
 			$(".next").attr("up", "cancel-search").attr("down", "cancel-search").attr("left", "cancel-search").attr("right", "cancel-search");
+			$(".selected").removeClass("selected");
+			$(".next").addClass("selected");
 		}
 	}
 	else if(cursor) {
+		$(".selected").removeClass("selected");
 		$(".next").addClass("selected");
 	}
 	else {
