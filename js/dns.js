@@ -9,6 +9,7 @@ var starting = true;
 var cursor = false;
 var htmlContent = '';
 var selected;
+var change = true;
 var intro = '<div class="cancel-content"><p><h2>Welcome to SwitchBru DNS.</h2><p><br>Redirecting to <a id="google-link" href="https://www.google.com/webhp?nomo=1&hl=en" tabindex="-1" down="cancel" up="nav" left="outer-google">Google</a> in <span id="count">5</span> seconds. <div><input type="submit" class="selected" id="cancel" tabindex="-1" up="google-link" left="outer-google" value="Cancel Redirection" onclick="populateData(this.id)" /></div></div>';
 targetDiv.innerHTML = intro;
 //option specific html
@@ -61,35 +62,35 @@ function populateData(event){
 			break;
 		}
 		case 'four':{
-			htmlContent = `<div class="youtube"><img class="ytimg" src="images/SwitchTube.png"><div><span id="first-para" left="outer-yt" up="gbatemp-thread" down="instructions">Thanks to Ep8Script on GBATemp, there is now a way to watch YouTube videos on your Switch! There is a thread about it <a href="https://gbatemp.net/threads/tool-website-for-watching-most-youtube-videos-on-the-switch.494796/" id="gbatemp-thread" tabindex="-1" down="first-para" left="outer-yt">here</a>.</span>
+			htmlContent = `<div class="youtube"><img class="ytimg" src="images/SwitchTube.png"><div><span id="first-para" left="outer-yt" up="nav" down="instructions">Thanks to Ep8Script on GBATemp, there is now a way to watch YouTube videos on your Switch! There is a thread about it <a href="https://gbatemp.net/threads/tool-website-for-watching-most-youtube-videos-on-the-switch.494796/" tabindex="-1">here</a>.</span>
 			<br><br>
-<h3 id="instructions" left="outer-yt" up-"first-para" down="sb-fb">Instructions</h3>
+<h3 id="instructions" left="outer-yt" up="first-para" down="in-order">Instructions</h3>
 <font color="red">You cannot watch videos using the DNS trick.</font> Nintendo has blocked video playback in the wifi login applet.<br><br>
 
-<span id="in-order"></span>In order to watch videos, you must use the Share applet. To access this applet, do the following:<br>
+<span id="in-order" left="outer-yt" up="instructions" down="in-order2"></span><span id="in-order2" left="outer-yt" up="in-order" down="user-settings"></span>In order to watch videos, you must use the Share applet. To access this applet, do the following:<br>
 
 <ol>
 <li>Go to your Wifi settings and turn OFF this custom DNS server (this will prevent you from accessing this browser).</li>
-<li>Go to the Switch's User settings, and try to link a Facebook account for social media. If you have already linked a Facebook account to this user, you must unlink it first.</li>
+<li><span id="user-settings" left="outer-yt" up="in-order2" down="browse-fb"></span>Go to the Switch's User settings, and try to link a Facebook account for social media. If you have already linked a Facebook account to this user, you must unlink it first.</li>
 <li>A login page will come up, go to the bottom and click one of the links on the bottom to go to Facebook for real.</li>
-<li class="skip"><i>You can now browse Facebook, but can't access external websites. That's okay.</i></li>
-<li>On Facebook, search for "<b>SwitchBru</b>" to find our <a href="https://www.facebook.com/SwitchBru/" id="sb-fb" left="outer-yt" up="instructions" tabindex="-1">Facebook page</a> (you might have to sign in).</li>
+<li class="skip"><span id="browse-fb" left="outer-yt" up="user-settings" down="search-for"></span><i>You can now browse Facebook, but can't access external websites. That's okay.</i></li>
+<li>On Facebook, search for "<b>SwitchBru</b>" to find our <a href="https://www.facebook.com/SwitchBru/" tabindex="-1">Facebook page</a> (you might have to sign in).</li>
 <li>In the post at the top of the profile page, click the Google Sites URL for watching videos!</li>
-<li>Search for a YouTube video you want to play, then click on the video and it should play.</li>
+<li><span id="search-for" left="outer-yt" up="browse-fb" down="ep8-twitter"></span>Search for a YouTube video you want to play, then click on the video and it should play.</li>
 <li>If you want to go back to the rest of the internet, turn back on the custom DNS in Internet Settings.</li>
 </ol>
 
-<h3>How does it work?</h3>
+<h3 id="how">How does it work?</h3>
 The Switch has a whitelist of websites that it's allowed to visit in the Share applet. This is more restricted than the Login applet, but it's allowed to play videos. Google.com is one of those websites, so the Google Sites link allows the Switch to play a video that is located on the Facebook page.<br>
 <br>
-If you need help troubleshooting or setting it up you can post in the above GBATemp thread, contact us, or contact <a href="https://twtitter.com/Ep8Script" tabindex="-1" id="ep8-twitter">@Ep8Script</a> on Twitter.
+If you need help troubleshooting or setting it up you can post in the above GBATemp thread, contact us, or contact <a href="https://twtitter.com/Ep8Script" tabindex="-1" id="ep8-twitter" left="outer-yt" up="search-for" down="st-link">@Ep8Script</a> on Twitter.
 <br><br>
 <h3>Videos still won't play on the website</h3>
 Make sure you are accessing the page <b>through the share applet</b> in User settings, when you go to link a Facebook account. You have to search for the post to click on the link for it to work. Doing it through this page using the DNS trick will result in the video not being able to play. <b>This is a technical limitation!</b> Blame Nintendo!<br><br>
 
-Using our page isn't necessary, but you do need a way to get this link to the "Share" applet somehow: <a href="https://sites.google.com/site/ytnintendoswitch/" tabindex="-1" id="st-link">https://sites.google.com/site/ytnintendoswitch/</a>
+Using our page isn't necessary, but you do need a way to get this link to the "Share" applet somehow: <a href="https://sites.google.com/site/ytnintendoswitch/" tabindex="-1" id="st-link" left="outer-yt" up="ep8-twitter">https://sites.google.com/site/ytnintendoswitch/</a>
 
-<br><br><br></div><span class="select-next" selectnext="gbatemp-thread"></span>`;
+<br><br><br></div><span class="select-next" selectnext="first-para"></span>`;
 			$(".title").html("YouTube");
 			selected = "outer-yt";
 			break;
@@ -116,7 +117,7 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 				<div class="link" id="10" left="outer-links" up="7" right="11" down="13"><a href="https://reddit.com" tabindex="-1">Reddit</a></div>
 				<div class="link" id="11" left="10" up="8" right="12" down="14"><a href="https://tumblr.com" tabindex="-1">Tumblr</a></div>
 				<div class="link" id="12" left="11" up="9" down="15"><a href="https://twitter.com" tabindex="-1">Twitter</a></div>
-				<div class="link" id="13" left="outer-links" up="10" right="14" down="16"><a href="https://wikipedia.org" tabindex="-1">Wikipedia</a></div>
+				<div class="link" id="13" left="outer-links" up="10" right="14" down="16"><a href="https://en.wikipedia.org" tabindex="-1">Wikipedia</a></div>
 				<div class="link" id="14" left="13" up="11" right="15" down="17"><a href="https://mail.google.com" tabindex="-1">GMail</a></div>
 				<div class="link" id="15" left="14" up="12" down="18"><a href="https://facebook.com" tabindex="-1">Facebook</a></div>
 				<div class="link" id="16" left="outer-links" up="13" right="17" down="19"><a href="https://amazon.com" tabindex="-1">Amazon</a></div> 
@@ -147,7 +148,7 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 			<div><input class="selected" type="submit" id="cancel-search" value="Continue to Google"tabindex="-1"  onclick="google()" tabindex="-1" down="discord-link" left="outer-google" up="nav"/>
 			</div><span up="cancel-search" left="outer-google" down="discord-link"></span>
 			<br>
-			Find us at:<br><br><a href="https://discord.gg/y2ASN3K" id="discord-link" tabindex="-1" up="cancel-search" left="outer-links" right="irccloud"><i class="fab fa-discord"></i>   https://discord.gg/y2ASN3K</a>
+			Find us at:<br><br><a href="https://discord.gg/y2ASN3K" id="discord-link" tabindex="-1" up="cancel-search" left="outer-google" right="irccloud"><i class="fab fa-discord"></i>   https://discord.gg/y2ASN3K</a>
 			<span>  and  </span>
 			<a href="https://www.irccloud.com/irc/freenode:2/channel/switchbru" id="irccloud" tabindex="-1" up="cancel-search" left="discord-link"><i class="far fa-comments"></i>   IRCCLOUD</a>
 			</div>`;
@@ -166,14 +167,20 @@ This server <b>does not currently block firmware updates</b>. If you are looking
 			break;
 		}
 	}
-	targetDiv.innerHTML = htmlContent;
-	var myDiv = document.getElementById('content');
-	myDiv.scrollTop = 0;
+	// I truly could not find a better way, don't know how I did it the first time
+	if(change) {
+		targetDiv.innerHTML = htmlContent;
+		var myDiv = document.getElementById('content');
+		myDiv.scrollTop = 0;
+	}
+	else {
+		change = true;
+	}
 	$(".next").attr("up", selected).attr("down", selected).attr("left", selected).attr("right", selected);
 	//sidebar highlighting
 	if(event !== "cancel" || event !== "about") {
-		$('.inner').removeClass('inner-active');
-		$("#"+event).addClass('inner-active');
+		$(".inner").removeClass("inner-active");
+		$("#"+event).addClass("inner-active");
 	}
 };
 // time function
@@ -188,7 +195,7 @@ function startTime() {
 	var h = today.getHours();
 	var m = today.getMinutes();
 	m = checkTime(m);
-	document.getElementById('time').innerHTML = h + ":" + m;
+	$("#time").html(h + ":" + m);
 	t = setTimeout(function() {
 		startTime()
 	}, 500);
@@ -427,27 +434,51 @@ function linkScroll() {
 			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3:last-of-type").offset().top 
 		}, 200); 
 	}
-	else if(sID == "gbatemp-thread") {
+	else if(sID == "first-para") {
 		$("#content").animate({
 			scrollTop:  0
 		}, 200);
 	}
-	else if(sID == "first-para") {
+	else if(sID == "instructions") {
 		$("#content").animate({
 			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content #first-para").offset().top
 		}, 200); 
 	}
-	else if(sID == "instructions") {
+	else if(sID == "in-order") {
 		$("#content").animate({
 			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content #instructions").offset().top
 		}, 300); 
 	}
-	else if(sID == "sb-fb") {
+	else if(sID == "in-order2") {
 		$("#content").animate({
 			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content #in-order").offset().top
-		}, 250); 
+		}, 200); 
+	}
+	else if(sID == "user-settings") {
+		$("#content").animate({
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content #user-settings").offset().top
+		}, 200); 
+	}
+	else if(sID == "browse-fb") {
+		$("#content").animate({
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content #browse-fb").offset().top
+		}, 200); 
+	}
+	else if(sID == "search-for") {
+		$("#content").animate({
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content #search-for").offset().top
+		}, 200); 
+	}
+	else if(sID == "ep8-twitter" || sID == "st-link") {
+		$("#content").animate({
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3#how").offset().top
+		}, 200); 
 	}
 	if($(".link.selected").length) {
 		$(".select-next").attr("selectnext", sID);
+	}
+	if($("#four.inner-active").length) {
+		$(".select-next").attr("selectnext", sID);
+		change = false;
 	}
 }

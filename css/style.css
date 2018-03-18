@@ -1,4 +1,4 @@
-/*switch style css for switchbru by pwsincd*/
+/*switch style css for SwitchBru by pwsincd*/
 /*Global style variable change these to change the whole theme*/
 /*many items could be grouped but kept it simple to read*/
 :root{
@@ -35,6 +35,9 @@ a {
 }
 a:hover {
 	text-decoration: underline;
+}
+.link a:hover {
+	text-decoration: none;
 }
 hr {
 	width: 95%;
