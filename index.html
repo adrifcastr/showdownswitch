@@ -42,8 +42,12 @@
 				</div>		
 			</div>
 			<hr>
-			<div class="outer" id="outer-about" up="outer-links" onclick="touched(this.id)">
+			<div class="outer" id="outer-about" up="outer-links" down="outer-news" onclick="touched(this.id)">
 				<div class="inner" id="about" onclick="populateData(this.id)"><i class="fas fa-info-circle"></i>&nbsp;&nbsp;About			
+				</div>		
+			</div>
+			<div class="outer" id="outer-news" up="outer-about" onclick="touched(this.id)">
+				<div class="inner" id="news" onclick="populateData(this.id)"><i class="far fa-newspaper"></i>&nbsp;&nbsp;News			
 				</div>		
 			</div>
 		</div>

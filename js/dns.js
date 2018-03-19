@@ -10,16 +10,16 @@ var cursor = false;
 var htmlContent = '';
 var selected;
 var change = true;
-var intro = '<div class="cancel-content"><p><h2>Welcome to SwitchBru DNS.</h2><p><br>Redirecting to <a id="google-link" href="https://www.google.com/webhp?nomo=1&hl=en" tabindex="-1" down="cancel" up="nav" left="outer-google">Google</a> in <span id="count">5</span> seconds. <div><input type="submit" class="selected" id="cancel" tabindex="-1" up="google-link" left="outer-google" value="Cancel Redirection" onclick="populateData(this.id)" /></div></div>';
+var intro = '<div class="cancel-content"><p><h2>Welcome to SwitchBru DNS.</h2><p><br>Redirecting to <a id="google-link" href="https://www.google.com/webhp?nomo=1&hl=en" tabindex="-1" down="cancel" up="nav" left="outer-google">Google</a> in <span id="count">7</span> seconds. <div><input type="submit" class="selected" id="cancel" tabindex="-1" up="google-link" left="outer-google" value="Cancel Redirection" onclick="populateData(this.id)" /></div></div>';
 targetDiv.innerHTML = intro;
+var newsBody = 'Sorry, no news to show <i class="far fa-frown"></i><br><br><small>[<a href="#" onclick="loadNews(\'refresh\')" id="refresh" tabindex="-1" left="outer-news">refresh</a>]</small><span class="select-next" selectnext="refresh"></span>';
 //option specific html
 function populateData(event){
 	switch(event){
-		case 'nav':{
+		case 'nav':
 			location.reload();
 			break;
-		}
-		case 'one':{
+		case 'one':
 			htmlContent = `<div class="google"><img class="google-rs" src="images/Google.png">
 			<br><br>
 			<form method="get" action="http://www.google.com/search">
@@ -31,8 +31,7 @@ function populateData(event){
 			$(".title").html("Google");
 			selected = "outer-google";
 			break;
-		}
-		case 'two':{
+		case 'two':
 			htmlContent = `<div class="google"><img class="webkit" src="images/webkit.png">
 			<br><br>
 			<form id="form" onsubmit="return false;">
@@ -47,8 +46,7 @@ function populateData(event){
 			$(".title").html("Enter URL");
 			selected = "outer-url";
 			break;
-		}
-		case 'three':{
+		case 'three':
 			htmlContent = `<div><h2><i class="far fa-question-circle"></i> SwitchBru DNS Server Feedback</h2><br>
 			This is a survey to collect information on the usage of the SwitchBru DNS server (45.55.142.122).<br><br>
 			We have made some design changes recently, and would like to better understand how people use the DNS service.<br><br>
@@ -60,42 +58,35 @@ function populateData(event){
 			selected = "outer-survey";
 			$(".title").html("Usage Survey");
 			break;
-		}
-		case 'four':{
-			htmlContent = `<div class="youtube"><img class="ytimg" src="images/SwitchTube.png"><div><span id="first-para" left="outer-yt" up="nav" down="instructions">Thanks to Ep8Script on GBATemp, there is now a way to watch YouTube videos on your Switch! There is a thread about it <a href="https://gbatemp.net/threads/tool-website-for-watching-most-youtube-videos-on-the-switch.494796/" tabindex="-1">here</a>.</span>
+		case 'four':
+			htmlContent = `<div class="youtube"><img class="ytimg" src="images/SwitchTube.png"><div><span id="first-para">Thanks to Ep8Script on GBATemp, there is now a way to watch YouTube videos on your Switch! There is a thread about it <a href="https://gbatemp.net/threads/tool-website-for-watching-most-youtube-videos-on-the-switch.494796/" tabindex="-1" id="gbatemp-thread" left="outer-yt" up="nav" down="instructions">here</a>.</span>
 			<br><br>
-<h3 id="instructions" left="outer-yt" up="first-para" down="in-order">Instructions</h3>
-<font color="red">You cannot watch videos using the DNS trick.</font> Nintendo has blocked video playback in the wifi login applet.<br><br>
-
-<span id="in-order" left="outer-yt" up="instructions" down="in-order2"></span><span id="in-order2" left="outer-yt" up="in-order" down="user-settings"></span>In order to watch videos, you must use the Share applet. To access this applet, do the following:<br>
-
-<ol>
-<li>Go to your Wifi settings and turn OFF this custom DNS server (this will prevent you from accessing this browser).</li>
-<li><span id="user-settings" left="outer-yt" up="in-order2" down="browse-fb"></span>Go to the Switch's User settings, and try to link a Facebook account for social media. If you have already linked a Facebook account to this user, you must unlink it first.</li>
-<li>A login page will come up, go to the bottom and click one of the links on the bottom to go to Facebook for real.</li>
-<li class="skip"><span id="browse-fb" left="outer-yt" up="user-settings" down="search-for"></span><i>You can now browse Facebook, but can't access external websites. That's okay.</i></li>
-<li>On Facebook, search for "<b>SwitchBru</b>" to find our <a href="https://www.facebook.com/SwitchBru/" tabindex="-1">Facebook page</a> (you might have to sign in).</li>
-<li>In the post at the top of the profile page, click the Google Sites URL for watching videos!</li>
-<li><span id="search-for" left="outer-yt" up="browse-fb" down="ep8-twitter"></span>Search for a YouTube video you want to play, then click on the video and it should play.</li>
-<li>If you want to go back to the rest of the internet, turn back on the custom DNS in Internet Settings.</li>
-</ol>
-
-<h3 id="how">How does it work?</h3>
-The Switch has a whitelist of websites that it's allowed to visit in the Share applet. This is more restricted than the Login applet, but it's allowed to play videos. Google.com is one of those websites, so the Google Sites link allows the Switch to play a video that is located on the Facebook page.<br>
-<br>
-If you need help troubleshooting or setting it up you can post in the above GBATemp thread, contact us, or contact <a href="https://twtitter.com/Ep8Script" tabindex="-1" id="ep8-twitter" left="outer-yt" up="search-for" down="st-link">@Ep8Script</a> on Twitter.
-<br><br>
-<h3>Videos still won't play on the website</h3>
-Make sure you are accessing the page <b>through the share applet</b> in User settings, when you go to link a Facebook account. You have to search for the post to click on the link for it to work. Doing it through this page using the DNS trick will result in the video not being able to play. <b>This is a technical limitation!</b> Blame Nintendo!<br><br>
-
-Using our page isn't necessary, but you do need a way to get this link to the "Share" applet somehow: <a href="https://sites.google.com/site/ytnintendoswitch/" tabindex="-1" id="st-link" left="outer-yt" up="ep8-twitter">https://sites.google.com/site/ytnintendoswitch/</a>
-
-<br><br><br></div><span class="select-next" selectnext="first-para"></span>`;
+			<h3 id="instructions" left="outer-yt" up="gbatemp-thread" down="in-order">Instructions</h3>
+			<font color="red">You cannot watch videos using the DNS trick.</font> Nintendo has blocked video playback in the wifi login applet.<br><br>
+			<span id="in-order" left="outer-yt" up="instructions" down="in-order2"></span><span id="in-order2" left="outer-yt" up="in-order" down="user-settings"></span>In order to watch videos, you must use the Share applet. To access this applet, do the following:<br>
+			<ol>
+			<li>Go to your Wifi settings and turn OFF this custom DNS server (this will prevent you from accessing this browser).</li>
+			<li><span id="user-settings" left="outer-yt" up="in-order2" down="sb-fb"></span>Go to the Switch's User settings, and try to link a Facebook account for social media. If you have already linked a Facebook account to this user, you must unlink it first.</li>
+			<li>A login page will come up, go to the bottom and click one of the links on the bottom to go to Facebook for real.</li>
+			<li class="skip"><span id="browse-fb"></span><i>You can now browse Facebook, but can't access external websites. That's okay.</i></li>
+			<li>On Facebook, search for "<b>SwitchBru</b>" to find our <a href="https://www.facebook.com/SwitchBru/" tabindex="-1" id="sb-fb" left="outer-yt" up="user-settings" down="search-for">Facebook page</a> (you might have to sign in).</li>
+			<li>In the post at the top of the profile page, click the Google Sites URL for watching videos!</li>
+			<li><span id="search-for" left="outer-yt" up="sb-fb" down="ep8-twitter"></span>Search for a YouTube video you want to play, then click on the video and it should play.</li>
+			<li>If you want to go back to the rest of the internet, turn back on the custom DNS in Internet Settings.</li>
+			</ol>
+			<h3 id="how">How does it work?</h3>
+			The Switch has a whitelist of websites that it's allowed to visit in the Share applet. This is more restricted than the Login applet, but it's allowed to play videos. Google.com is one of those websites, so the Google Sites link allows the Switch to play a video that is located on the Facebook page.<br>
+			<br>
+			If you need help troubleshooting or setting it up you can post in the above GBATemp thread, contact us, or contact <a href="https://twtitter.com/Ep8Script" tabindex="-1" id="ep8-twitter" left="outer-yt" up="search-for" down="st-link">@Ep8Script</a> on Twitter.
+			<br><br>
+			<h3>Videos still won't play on the website</h3>
+			Make sure you are accessing the page <b>through the share applet</b> in User settings, when you go to link a Facebook account. You have to search for the post to click on the link for it to work. Doing it through this page using the DNS trick will result in the video not being able to play. <b>This is a technical limitation!</b> Blame Nintendo!<br><br>
+			Using our page isn't necessary, but you do need a way to get this link to the "Share" applet somehow: <a href="https://sites.google.com/site/ytnintendoswitch/" tabindex="-1" id="st-link" left="outer-yt" up="ep8-twitter">https://sites.google.com/site/ytnintendoswitch/</a>
+			<br><br><br></div><span class="select-next" selectnext="gbatemp-thread"></span>`;
 			$(".title").html("YouTube");
 			selected = "outer-yt";
 			break;
-		}
-		case 'five':{
+		case 'five':
 			htmlContent = `
 			<h3>Switch-related</h3>
 			<div class="flex">
@@ -140,8 +131,7 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 			$(".title").html("Useful Links");
 			selected = "outer-links";
 			break;
-		}
-		case 'cancel':{
+		case 'cancel':
 			htmlContent = `<div class="cancel-content">
 			<p><h2>Welcome to SwitchBru DNS.</h2><p>
 			<br>Redirection to Google cancelled. Welcome to our DNS server. 
@@ -154,18 +144,24 @@ Using our page isn't necessary, but you do need a way to get this link to the "S
 			</div>`;
 			selected = "outer-google";
 			break;
-		}
-		case 'about':{
+		case 'about':
 			htmlContent = `<h2>About SwitchBru DNS server</h2>
-			This service is provided free of charge with no warranty whatsoever. The service does not store or retain any personal data. Besides providing the Google redirect for the Nintendo Switch, all DNS queries are handled via <a href="https://developers.google.com/speed/public-dns/" tabindex="-1" id="google-dns" up="nav" left="outer-about" down="faq">Google DNS</a>.
-<br><br>
-We are hosting this service as we believe that those of us that purchased an Internet-capable Switch should have the right to browse the web! We hope that one day Nintendo adds an official web browser to the console.
-<br><br>
-This server <b>does not currently block firmware updates</b>. If you are looking to block updates, you should use <a href="https://reswitched.tech/info/faq" tabindex="-1" id="faq" up="google-dns" left="outer-about">ReSwitched DNS</a>, or stay offline.<span class="select-next" selectnext="google-dns"></span>`;
+			This service is provided free of charge. We do not store or retain any personal data. Besides providing the Google redirect for the Nintendo Switch, all DNS queries are handled via <a href="https://developers.google.com/speed/public-dns/" tabindex="-1" id="google-dns" up="nav" left="outer-about" down="faq">Google DNS</a>.
+			<br><br>
+			We are hosting this service as we believe that those of us that purchased an Internet-capable Switch should have the right to browse the web! We hope that one day Nintendo adds an easily accessible web browser to the console.
+			<br><br>
+			This server <b>does not currently block firmware updates</b>. If you are looking to block updates, you should use the <a href="https://reswitched.tech/info/faq" tabindex="-1" id="faq" up="google-dns" left="outer-about">ReSwitched DNS</a>, or stay offline.
+			<br><br><hr />
+			<small>v3.0.0 &ndash; created by vgmoose and designed by pwsincd, with controller support by Ep8Script</small><span class="select-next" selectnext="google-dns"></span>`;
 			$(".title").html("About");
 			selected = "outer-about";
 			break;
-		}
+		case 'news':
+			htmlContent = "<h2>Latest</h2>";
+			htmlContent += newsBody;
+			$(".title").html("News");
+			selected = "outer-news";
+			break;
 	}
 	// I truly could not find a better way, don't know how I did it the first time
 	if(change) {
@@ -177,11 +173,14 @@ This server <b>does not currently block firmware updates</b>. If you are looking
 		change = true;
 	}
 	$(".next").attr("up", selected).attr("down", selected).attr("left", selected).attr("right", selected);
-	//sidebar highlighting
+	// Sidebar highlighting
 	if(event !== "cancel" || event !== "about") {
 		$(".inner").removeClass("inner-active");
 		$("#"+event).addClass("inner-active");
 	}
+	// Change icon
+	$("#nav #icon").replaceWith($("#"+event+" svg")[0].outerHTML);
+	$("#nav svg").attr("id", "icon");
 };
 // time function
 function checkTime(i) {
@@ -204,19 +203,189 @@ startTime();
 // redirection countdown
 window.onload = function(){
 	(function(){
-		var counter = 5;
+		var counter = 7;
 		setInterval(function() {
 			counter--;
 			if (counter >= 0 && ("#count").length) {
 				$("#count").html(counter);
 			}
-			if (counter === 5) {
+			if (counter === 7) {
 				clearInterval(counter);
 				//window.location.href = "https://www.google.com/webhp?nomo=1&hl=en";
 			}   
 		}, 1000);
 	})();
+	loadNews("first");
+}
 
+function loadNews(type) {
+	var news_id;
+	var news_title;
+	var news_image;
+	var first;
+	var isNews = false;
+	$.ajax({
+		url: "http://switchbru-news.dx.am/get-articles.php", 
+		dataType: "json",
+		success: function(data) {
+			if(data.length > 0) {
+				newsBody = "";
+				var newsBox = "";
+				for (i = 0; i < data.length; i++) {
+					news_id = data[i].id;
+					news_title = data[i].title;
+					news_image = data[i].image;
+					newsBox = '<div class="ignore"><div class="news-item" id="news'+news_id+'" onclick="showNews(this.id)"><img class="news-image" src="http://switchbru-news.dx.am/images/image.php?name='+news_image+'" height="169"><div class="news-title"><span>'+news_title+'</span></div></div></div>';
+					if(!isOdd(i + 2)) {
+						newsBox = $(newsBox).find(".news-item").attr("left", "outer-news").end()[0].outerHTML;
+						if(i + 1 < data.length) {
+							newsBox = $(newsBox).find(".news-item").attr("right", "news"+data[i+1].id).end()[0].outerHTML;
+						}
+						if(i + 2 < data.length) {
+							newsBox = $(newsBox).find(".news-item").attr("down", "news"+data[i+2].id).end()[0].outerHTML;
+						}
+					}
+					else {
+						newsBox = $(newsBox).find(".news-item").attr("left", "news"+data[i-1].id).end()[0].outerHTML;
+						if(i + 2 < data.length) {
+							newsBox = $(newsBox).find(".news-item").attr("down", "news"+data[i+2].id).end()[0].outerHTML;
+						}
+					}
+					if(i > 1) {
+						newsBox = $(newsBox).find(".news-item").attr("up", "news"+data[i-2].id).end()[0].outerHTML;
+					}
+					newsBody += $(newsBox).html();
+					if(i == 0) {
+						first = "news"+news_id;
+					}
+				}
+				newsBody = '<div id="news-items">'+newsBody+'</div><span class="select-next" selectnext="'+first+'"></span>';
+				isNews = true;
+			}
+			if(type == "refresh") {
+				populateData("news");
+				if(isNews == true) {
+					$(".selected").removeClass("selected");
+					$(".news-item:first-of-type").addClass("selected");
+				}
+				else {
+					$(".selected").removeClass("selected");
+					$("#refresh").addClass("selected");
+				}
+			}
+		},
+	});
+}
+
+function showNews(newsID) {
+	var news_id, news_title, news_image, news_text, news_time, news_author;
+	var ID = newsID.replace("news","");
+	$.ajax({
+		url: "http://switchbru-news.dx.am/get-news.php",
+		method: "POST",
+		dataType: "json",
+		data: {"id":ID},
+		success: function(data) {
+			if(data.error !== true) {
+				$("#content").empty();
+				$(".selected").removeClass("selected");
+				$("#content").html('<div id="news-article"><div class="news-header"><span></span><span></span></div><h4 id="news-title"></h4><img class="news-image-main"><div class="news-text"></div><hr><div id="vote"><div id="like" onclick="vote(\'like\')" left="outer-news" right="dislike" up="back-button"><span><i class="fas fa-heart"></i> Like</span></div><div id="dislike" onclick="vote(\'dislike\')" left="like" up="back-button"><span><i class="fas fa-heartbeat"></i> Dislike</span></div><p class="feedback-bubble left" style="display: none;">Thank you for your feedback.</p></div><br><br><br><br></div><span class="select-next" selectnext="back-button"></span>');
+				getVote(ID);
+				news_id = data.id;
+				news_title = data.title;
+				news_image = data.image;
+				news_text = data.article;
+				news_time = data.time;
+				news_author = data.author;
+				news_text = $('<div class="ignore">'+news_text+'</div>').find("nl").replaceWith("<br><br>").end()[0].outerHTML;
+				$(".news-text").html($(news_text).html());
+				$("#news-article").addClass("article"+news_id);
+				$(".news-header span:first-of-type").html(news_author);
+				parseTime(news_time);
+				$(".news-header span:last-of-type").html(date+"/"+month+"/"+year);
+				$("#news-title").html('<a class="selected" id="back-button" href="#" onclick="loadNews(\'refresh\')" down="like" left="outer-news">&lt; </a>'+news_title);
+				$(".news-image-main").attr("src", "http://switchbru-news.dx.am/images/image.php?name="+news_image);
+			}
+			else {
+				alert(data.message);
+			}
+		},
+	});
+}
+
+var session;
+function vote(type) {
+	var id = $("#news-article").attr("class");
+	id = id.replace("article","");
+	$.ajax({
+		url: "http://switchbru-news.dx.am/vote.php",
+		method: "POST",
+		dataType: "json",
+		data: {"id":id,"type":type},
+		success: function(data) {
+			if(data.error !== true) {
+				$(".voted").removeClass("voted");
+				switch(data.vote) {
+					case 1:
+						$("#like").addClass("voted");
+						feedbackThanks();
+						break;
+					case 2:
+						$("#dislike").addClass("voted");
+						feedbackThanks();
+						break;
+				}
+			}
+			else {
+				alert(data.message);
+			}
+		},
+	});
+}
+
+function feedbackThanks() {
+	$('.feedback-bubble').fadeIn('fast', function () {
+		$(this).delay(1800).fadeOut('fast');
+	});
+}
+
+function isOdd(i) {
+	if(i & 1) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+function getVote(newsID) {
+	$.ajax({
+		url: "http://switchbru-news.dx.am/get-vote.php",
+		method: "POST",
+		dataType: "json",
+		data: {"id":newsID},
+		success: function(newData) {
+			if(newData.success == true) {
+				if(newData.vote == 1) {
+					$("#like").addClass("voted");
+				}
+				else if(newData.vote == 2) {
+					$("#dislike").addClass("voted");
+				}
+			}
+		},
+	});
+}
+
+var date;
+var month;
+var year;
+
+function parseTime(time) {
+	var match = time.match(/^(\d+)-(\d+)-(\d+) (\d+)\:(\d+)\:(\d+)$/)
+	year = match[1];
+	month = match[2];
+	date = match[3];
 }
 
 function touched(id) {
@@ -270,10 +439,13 @@ gamepad.bind(Gamepad.Event.BUTTON_DOWN, function (e) {
         case "FACE_2":
 			if(cursor) {
 			}
+			else if($("#refresh.selected").length) {
+				loadNews("refresh");
+			}
 			else if($(".selected.outer").length) {
 				$(".selected").removeClass("selected");
 				$("#"+$(".select-next").attr("selectnext")).addClass("selected");
-				change = false;
+				resetChange();
 			}
 			else if($("#survey.selected").length) {
 				survey();
@@ -372,6 +544,12 @@ function LEFT() {
 			starting = false;
 		}
 	}
+	if($("#four.inner-active").length && change == false) {
+		change = true;
+	}
+	else if($("#news.inner-active") && change == false) {
+		change = true;
+	}
 }
 
 function RIGHT() {
@@ -383,6 +561,7 @@ function RIGHT() {
 	else if($(".selected.outer").length) {
 		$(".selected").removeClass("selected");
 		$("#"+$(".select-next").attr("selectnext")).addClass("selected");
+		resetChange();
 	}
 }
 
@@ -400,6 +579,7 @@ function DOWN() {
 
 function linkScroll() {
 	var sID = $(".selected").attr("id");
+	var s = $(".selected");
 	if(sID == "1" || sID == "2" || sID == "3" ) {
 		$("#content").animate({
 			scrollTop:  0
@@ -435,7 +615,7 @@ function linkScroll() {
 			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3:last-of-type").offset().top 
 		}, 200); 
 	}
-	else if(sID == "first-para") {
+	else if(sID == "gbatemp-thread") {
 		$("#content").animate({
 			scrollTop:  0
 		}, 200);
@@ -460,7 +640,7 @@ function linkScroll() {
 			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content #user-settings").offset().top
 		}, 200); 
 	}
-	else if(sID == "browse-fb") {
+	else if(sID == "sb-fb") {
 		$("#content").animate({
 			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content #browse-fb").offset().top
 		}, 200); 
@@ -475,10 +655,45 @@ function linkScroll() {
 			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content h3#how").offset().top
 		}, 200); 
 	}
+	else if(sID == "like") {
+		$("#content").animate({
+			scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content #news-article hr").offset().top
+		}, 6000); 
+	}
+	else if(sID == "back-button") {
+		$("#content").animate({
+			scrollTop:  0
+		}, 6000); 
+	}
+	else if(s.parent().attr("id") == "news-items") {
+		if(s.attr("up")) {
+			var up = s.attr("up");
+			$("#content").animate({
+				scrollTop:  $("#content").scrollTop() - $("#content").offset().top + $("#content #"+up+" .news-title span").offset().top
+			}, 200); 
+		}
+		else {
+			$("#content").animate({
+				scrollTop:  0
+			}, 200); 
+		}
+	}
 	if($(".link.selected").length) {
 		$(".select-next").attr("selectnext", sID);
 	}
-	if($("#four.inner-active").length) {
+	if($("#four.inner-active").length && change == false) {
 		$(".select-next").attr("selectnext", sID);
+	}
+	if($("#news.inner-active").length && change == false) {
+		$(".select-next").attr("selectnext", sID);
+	}
+}
+
+function resetChange() {
+	if($(".selected").attr("id") == "gbatemp-thread") {
+		change = false;
+	}
+	else if($(".selected").hasClass("news-item")) {
+		change = false;
 	}
 }
