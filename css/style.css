@@ -1,7 +1,7 @@
-/*switch style css for SwitchBru by pwsincd*/
-/*Global style variable change these to change the whole theme*/
-/*many items could be grouped but kept it simple to read*/
-:root{
+/* Switch-style CSS for SwitchBru by pwsincd*/
+/* Global style variable change these to change the whole theme*/
+/* many items could be grouped but kept it simple to read*/
+:root {
 	/* Dark Theme
 	--main-color:#2d2d2d;
 	--side-color:#323232;
@@ -343,6 +343,9 @@ a.selected {
 .news-text highlight {
 	color: var(--border-focus-color);
 }
+#vote {
+	display: inline;
+}
 #vote div {
 	background-color:  white;
 	border-color:  var(--side-color);
@@ -350,14 +353,14 @@ a.selected {
 	border-width: 2px;
 	cursor: pointer;
 	float: left;
-	font-size: 10px;
-	height: 20px;
-	width: 80px;
+	font-size: 14px;
+	height: 28px;
+	width: 98px;
 }
 #vote div span {
 	margin-left: 4px;
 	position: relative;
-	top: 2px;
+	top: 3.5px;
 }
 #vote .voted {
 	color: var(--text-focus-color);
@@ -378,12 +381,12 @@ a.selected {
 	bottom: auto;
 	border-width: 5px 14px 5px 0;
 	border-color: transparent white;
-	left: -11px;
+	left: -13px;
 	top: 6px;
 }
 .feedback-bubble.left {
 	background: white;
-	margin-left: 170px;
+	margin-left: 215px;
 }
 .feedback-bubble::after {
 	content: "";
@@ -395,14 +398,16 @@ a.selected {
 	border-color: white transparent;
 	display: block;
 	width: 0px;
+	height: 3px;
 }
 .feedback-bubble {
 	position: relative;
+	float: left;
 	padding: 5px;
-	margin: 1em 0 3em;
 	color: #000;
-	bottom: 0px;
+	bottom: 40px !important;
 	background: linear-gradient(#f9d835, #f3961c);
-	font-size: 10px;
-	width: 50%;
+	font-size: 13.5px;
+	width: 47%;
+	height: 25px;
 }
